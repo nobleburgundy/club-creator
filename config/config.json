@@ -1,7 +1,7 @@
 {
   "development": {
     "username": "root",
-    "password": "jamesmysql",
+    "password": "",
     "database": "orbit_db",
     "host": "127.0.0.1",
     "dialect": "mysql"

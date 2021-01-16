@@ -29,7 +29,6 @@ module.exports = function (app) {
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/index", isAuthenticated, (req, res) => {
-    // res.render("index", { clubs: [...data] });
     db.Club.findAll({}).then(function (data) {
       // render the values of the data with spread operator
       res.render("index", { clubs: [...data] });

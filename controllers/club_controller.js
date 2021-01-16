@@ -3,6 +3,8 @@ const router = express.Router();
 const club = require("../models/club.js");
 const db = require("../models");
 
+// index, club, user, event handlebars
+
 // html routes TODO: separate to other files
 router.get("/", function (req, res) {
   db.Club.findAll({}).then(function (data) {
@@ -20,12 +22,46 @@ router.get("/api/clubs", function (req, res) {
   });
 });
 
+// html to show which club user is in
+router.get("/api/users/:id", function (req, res) {
+  db.Club.findAll({
+    where: {
+      users: req.body.users
+    }
+  }).then(function (result) {
+    res.json(result)
+  });
+});
+
+// View event
+router.get("/api/event/:id", function (req, res) {
+  db.Club.findAll({
+    where: {
+      event: req.body.event
+    }
+  }).then(function (result) {
+    res.json(result)
+  });
+});
+
+
+
+
+
+
+// Create a new club
 router.post("/api/clubs", function (req, res) {
   db.Club.create({ club_name: req.body.club_name }).then(function (result) {
     res.json(result);
   });
 });
 
+
+
+
+
+
+// Delete a club
 router.delete("/api/clubs/:id", function (req, res) {
   const condition = { id: req.params.id };
   club.delete(condition, function (result) {

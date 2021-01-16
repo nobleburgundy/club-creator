@@ -4,60 +4,70 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 155]
-      }
+        len: [1, 155],
+      },
     },
     club_description: {
-      type: DataTypes.SRING,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 255]
-      }
+        len: [1, 255],
+      },
     },
     location_city: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1]
-      }
+        len: [1],
+      },
     },
     location_state: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1]
-      }
+        len: [1],
+      },
     },
     location_zip: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1]
-      }
+        len: [1],
+      },
     },
     online_base_url: {
-      type:  DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1],
-        isUrl: true
-      }
+        isUrl: true,
+      },
     },
     club_image_url: {
-      type:  DataTypes.STRING,
+      type: DataTypes.STRING,
       allowNull: false,
       validate: {
         len: [1],
-        isUrl: true
-      }
+        isUrl: true,
+      },
     },
     category: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1]
-      }
+        len: [1],
+      },
     },
   });
+
+  Club.associate = function (models) {
+    models.Club.hasMany(models.User, {
+      foreignKey: {
+        name: "creator_id",
+        allowNull: false,
+      },
+    });
+  };
+
   return Club;
 };

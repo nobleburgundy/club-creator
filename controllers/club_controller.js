@@ -21,7 +21,7 @@ router.get("/api/clubs", function (req, res) {
 });
 
 router.post("/api/clubs", function (req, res) {
-  db.Club.create({ club_name: req.body.club_name }).then(function (result) {
+  db.Club.create(req.body).then(function (result) {
     res.json(result);
   });
 });

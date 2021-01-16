@@ -64,7 +64,7 @@ module.exports = function (sequelize, DataTypes) {
     models.Club.hasMany(models.User, {
       foreignKey: {
         name: "creator_id",
-        allowNull: false,
+        allowNull: true,
       },
     });
   };

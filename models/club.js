@@ -37,7 +37,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     online_base_url: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
         len: [1],
         isUrl: true,
@@ -45,7 +45,7 @@ module.exports = function (sequelize, DataTypes) {
     },
     club_image_url: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
         len: [1],
         isUrl: true,
@@ -64,7 +64,7 @@ module.exports = function (sequelize, DataTypes) {
     models.Club.hasMany(models.User, {
       foreignKey: {
         name: "creator_id",
-        allowNull: false,
+        allowNull: true,
       },
     });
   };

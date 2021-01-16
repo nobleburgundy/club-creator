@@ -28,8 +28,19 @@ router.get("/api/users/:id", function (req, res) {
     where: {
       users: req.body.users // probably need to change this reflect table/cells name
     }
-  }).then(function (result) {
-    res.json(result) // will need to change this once all handlebars are done
+  }).then(function (data) {
+    res.render("users", { clubs: [...data] }); // will need to change this once all handlebars are done
+  });
+});
+
+// View club
+router.get("/api/clubs/:id", function (req, res) {
+  db.Club.findAll({
+    where: {
+      users: req.body.users // probably need to change this reflect table/cells name
+    }
+  }).then(function (data) {
+    res.render("users", { clubs: [...data] }); // will need to change this once all handlebars are done
   });
 });
 
@@ -39,8 +50,8 @@ router.get("/api/event/:id", function (req, res) {
     where: {
       events: req.body.events // probably need to change thisreflect table/cells name
     }
-  }).then(function (result) {
-    res.json(result) // will need to change this once all handlebars are done
+  }).then(function (data) {
+    res.render("events", { clubs: [...data] }); // will need to change this once all handlebars are done
   });
 });
 

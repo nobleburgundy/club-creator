@@ -7,7 +7,7 @@ const db = require("../models");
 
 // show home page
 router.get("/", function (req, res) {
-  db.Club.findAll({}).then(function (data) {
+  db.Club.findAll({}).then(function (data) {  // might need to change Club to reflect the right model
     // render the values of the data with spread operator
     res.render("index", { clubs: [...data] });
   });
@@ -17,7 +17,7 @@ router.get("/", function (req, res) {
 router.get("/api/clubs", function (req, res) {
   // get route for getting all clubs
   const query = {};
-  db.Club.findAll({}).then(function (result) {
+  db.Club.findAll({}).then(function (result) { // might need to change Club to reflect the right model
     res.json(result);
   });
 });
@@ -26,7 +26,7 @@ router.get("/api/clubs", function (req, res) {
 router.get("/api/events", function (req, res) {
   // get route for getting all clubs
   const query = {};
-  db.Club.findAll({}).then(function (result) {
+  db.Club.findAll({}).then(function (result) { // might need to change Club to reflect the right model
     res.json(result);
   });
 });
@@ -34,7 +34,7 @@ router.get("/api/events", function (req, res) {
 
 // html to show which club a user is in
 router.get("/api/users/:id", function (req, res) {
-  db.Club.findAll({
+  db.Club.findAll({ // might need to change Club to reflect the right model
     where: {
       users: req.body.users // probably need to change this reflect table/cells name
     }
@@ -45,7 +45,7 @@ router.get("/api/users/:id", function (req, res) {
 
 // View single club
 router.get("/api/clubs/:id", function (req, res) {
-  db.Club.findAll({
+  db.Club.findAll({ // might need to change Club to reflect the right model
     where: {
       club_name: req.body.club_name // probably need to change this reflect table/cells name
     }
@@ -56,7 +56,7 @@ router.get("/api/clubs/:id", function (req, res) {
 
 // View single event
 router.get("/api/event/:id", function (req, res) {
-  db.Club.findAll({
+  db.Club.findAll({ // might need to change Club to reflect the right model
     where: {
       event_name: req.body.event_name // probably need to change thisreflect table/cells name
     }
@@ -72,6 +72,7 @@ router.get("/api/event/:id", function (req, res) {
 
 // Create a new club
 router.post("/api/clubs", function (req, res) {
+  // might need to change Club to reflect the right model
   db.Club.create({ club_name: req.body.club_name }).then(function (result) {
     res.json(result);
   });
@@ -79,6 +80,7 @@ router.post("/api/clubs", function (req, res) {
 
 // Create a new event
 router.post("/api/events", function (req, res) {
+  // might need to change Club to reflect the right model
   db.Club.create({ event_name: req.body.event_name }).then(function (result) {
     res.json(result);
   });
@@ -86,6 +88,7 @@ router.post("/api/events", function (req, res) {
 
 // Create new user
 router.post("api/users", function (req, res) {
+  // might need to change Club to reflect the right model
   db.Club.create({ user_name: req.body.user_name }).then(function (result) {
     res.json(result);
   });
@@ -99,7 +102,7 @@ router.post("api/users", function (req, res) {
 // Delete a club
 router.delete("/api/clubs/:id", function (req, res) {
   const condition = { id: req.params.id };
-  club.delete(condition, function (result) {
+  db.Club.delete(condition, function (result) {
     if (result.affectedRows == 0) {
       // If no rows were changed, then the ID must not exist, so 404
       return res.status(404).end();

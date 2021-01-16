@@ -67,7 +67,12 @@ router.post("/api/clubs", function (req, res) {
   });
 });
 
-
+// Create a new event
+router.post("/api/events", function (req, res) {
+  db.Club.create({ club_name: req.body.event_name }).then(function (result) {
+    res.json(result);
+  });
+});
 
 
 

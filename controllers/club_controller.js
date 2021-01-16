@@ -5,7 +5,7 @@ const db = require("../models");
 
 // index, club, user, event handlebars
 
-// html routes TODO: separate to other files
+// show home page
 router.get("/", function (req, res) {
   db.Club.findAll({}).then(function (data) {
     // render the values of the data with spread operator
@@ -13,7 +13,7 @@ router.get("/", function (req, res) {
   });
 });
 
-// api routes - TODO: separate to other files
+// show all clubs in api -- will need to change to show all clubs in a html page
 router.get("/api/clubs", function (req, res) {
   // get route for getting all clubs
   const query = {};
@@ -22,9 +22,17 @@ router.get("/api/clubs", function (req, res) {
   });
 });
 
+// show all events in api -- will need to change to show all clubs in a html page
+router.get("/api/events", function (req, res) {
+  // get route for getting all clubs
+  const query = {};
+  db.Club.findAll({}).then(function (result) {
+    res.json(result);
+  });
+});
 
 
-// html to show which club user is in
+// html to show which club a user is in
 router.get("/api/users/:id", function (req, res) {
   db.Club.findAll({
     where: {
@@ -35,7 +43,7 @@ router.get("/api/users/:id", function (req, res) {
   });
 });
 
-// View club
+// View single club
 router.get("/api/clubs/:id", function (req, res) {
   db.Club.findAll({
     where: {
@@ -46,7 +54,7 @@ router.get("/api/clubs/:id", function (req, res) {
   });
 });
 
-// View event
+// View single event
 router.get("/api/event/:id", function (req, res) {
   db.Club.findAll({
     where: {

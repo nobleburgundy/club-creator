@@ -26,10 +26,10 @@ router.get("/api/clubs", function (req, res) {
 router.get("/api/users/:id", function (req, res) {
   db.Club.findAll({
     where: {
-      users: req.body.users
+      users: req.body.users // probably need to change this reflect table/cells name
     }
   }).then(function (result) {
-    res.json(result)
+    res.json(result) // will need to change this once all handlebars are done
   });
 });
 
@@ -37,10 +37,10 @@ router.get("/api/users/:id", function (req, res) {
 router.get("/api/event/:id", function (req, res) {
   db.Club.findAll({
     where: {
-      event: req.body.event
+      events: req.body.events // probably need to change thisreflect table/cells name
     }
   }).then(function (result) {
-    res.json(result)
+    res.json(result) // will need to change this once all handlebars are done
   });
 });
 

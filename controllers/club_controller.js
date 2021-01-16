@@ -22,6 +22,8 @@ router.get("/api/clubs", function (req, res) {
   });
 });
 
+
+
 // html to show which club user is in
 router.get("/api/users/:id", function (req, res) {
   db.Club.findAll({
@@ -37,10 +39,10 @@ router.get("/api/users/:id", function (req, res) {
 router.get("/api/clubs/:id", function (req, res) {
   db.Club.findAll({
     where: {
-      users: req.body.users // probably need to change this reflect table/cells name
+      club_name: req.body.club_name // probably need to change this reflect table/cells name
     }
   }).then(function (data) {
-    res.render("users", { clubs: [...data] }); // will need to change this once all handlebars are done
+    res.render("club", { club_name: [...data] }); // will need to change this once all handlebars are done
   });
 });
 
@@ -48,10 +50,10 @@ router.get("/api/clubs/:id", function (req, res) {
 router.get("/api/event/:id", function (req, res) {
   db.Club.findAll({
     where: {
-      events: req.body.events // probably need to change thisreflect table/cells name
+      event_name: req.body.event_name // probably need to change thisreflect table/cells name
     }
   }).then(function (data) {
-    res.render("events", { clubs: [...data] }); // will need to change this once all handlebars are done
+    res.render("events", { event_name: [...data] }); // will need to change this once all handlebars are done
   });
 });
 
@@ -69,10 +71,19 @@ router.post("/api/clubs", function (req, res) {
 
 // Create a new event
 router.post("/api/events", function (req, res) {
-  db.Club.create({ club_name: req.body.event_name }).then(function (result) {
+  db.Club.create({ event_name: req.body.event_name }).then(function (result) {
     res.json(result);
   });
 });
+
+// Create new user
+router.post("api/users", function (req, res) {
+  db.Club.create({ user_name: req.body.user_name }).then(function (result) {
+    res.json(result);
+  });
+});
+
+
 
 
 

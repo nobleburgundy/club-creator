@@ -21,7 +21,16 @@ router.get("/api/clubs", function (req, res) {
 });
 
 router.post("/api/clubs", function (req, res) {
-  db.Club.create(req.body).then(function (result) {
+  db.Club.create({
+    club_name: req.body.club_name,
+    club_description: req.body.club_description,
+    location_city: req.body.location_city,
+    location_state: req.body.location_state,
+    location_zip: req.body.location_zip,
+    online_base_url: req.body.online_base_url,
+    club_image_url: req.body.club_image_url,
+    category: req.body.category,
+  }).then(function (result) {
     res.json(result);
   });
 });

@@ -39,7 +39,7 @@ $(document).ready(() => {
       userName: userName,
     })
       .then(() => {
-        window.location.replace("/members");
+        window.location.replace("/index");
         // If there's an error, handle it by throwing up a bootstrap alert
       })
       .catch(handleLoginErr);

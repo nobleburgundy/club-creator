@@ -1,13 +1,26 @@
+
 <div class="container">
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <h2>Welcome <span class="member-name"></span></h2>
-            <h3>Your Clubs:</h3>
-            <ul>
-                {{#each clubs}}
-                <li>{{this.dataValues.club_name}}</li>
-                {{/each}}
-            </ul>
+<h1>Clubs</h1>
+
+<h2>Welcome <span class="member-name"></span></h2>
+<h3>Your Clubs:</h3>
+
+<div class="row">
+{{#each clubs}}
+<div class="col-lg-3 col-md-6 mb-4">
+        <div class="card h-100">
+          <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+          <div class="card-body">
+            <h4 class="card-title">{{this.dataValues.club_name}}</h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+          </div>
+          <div class="card-footer">
+            <a href="#" class="btn btn-primary">Gravitate!</a>
+          </div>
         </div>
-    </div>
+  </div>
+{{/each}}
 </div>
+
+ 
+

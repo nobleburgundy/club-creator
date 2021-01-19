@@ -38,6 +38,14 @@ module.exports = function (sequelize, DataTypes) {
         len: [1],
       },
     },
+},
+// adding a scope for sending User model without password (for use on front-end)
+{ 
+  scopes: {
+    withoutPassword: {
+      attributes: { exclude: ['password'] },
+    }
+  }
 });
 
   User.associate = function (models) {

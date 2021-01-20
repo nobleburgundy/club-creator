@@ -3,16 +3,6 @@ const router = express.Router();
 const event = require("../models/events.js");
 const db = require("../models");
 
-// index, event, user, event handlebars
-
-// show home page
-router.get("/", function (req, res) {
-  db.Event.findAll({}).then(function (data) {  // might need to change event to reflect the right model
-    // render the values of the data with spread operator
-    res.render("index", { event: [...data] });
-  });
-});
-
 // show all events in api -- will need to change to show all events in a html page
 router.get("/api/events", function (req, res) {
   // get route for getting all events
@@ -22,32 +12,30 @@ router.get("/api/events", function (req, res) {
   });
 });
 
-// html to show which event a user is in
-router.get("/api/users/:id", function (req, res) {
-  db.Event.findAll({ // might need to change event to reflect the right model
-    where: {
-      users: req.body.users // probably need to change this reflect table/cells name
-    }
-  }).then(function (data) {
-    res.render("users", { event: [...data] }); // will need to change this once all handlebars are done
-  });
-});
-
 // View single event
 router.get("/api/event/:id", function (req, res) {
-  db.Event.findAll({ // might need to change event to reflect the right model
+  db.Event.findOne({ 
     where: {
-      event_name: req.body.event_name // probably need to change thisreflect table/cells name
+      id: req.params.id 
     }
   }).then(function (data) {
-    res.render("events", { event_name: [...data] }); // will need to change this once all handlebars are done
+    res.json(data); 
   });
 });
 
 // Create a new event
 router.post("/api/events", function (req, res) {
   // might need to change event to reflect the right model
-  db.Event.create({ event_name: req.body.event_name }).then(function (result) {
+  db.Event.create({ 
+    event_name: req.body.event_name,
+    date_time: req.body.date_time,
+    location_city: req.body.location_city,
+    location_state: req.body.location_state,
+    location_zip: req.body.location_zip,
+    location_url: req.body.location_url,
+    category: req.body.category,
+    event_description: req.body.event_description
+   }).then(function (result) {
     res.json(result);
   });
 });

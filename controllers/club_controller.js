@@ -34,7 +34,6 @@ router.put("/api/clubs/:id", function (req, res) {
   let condition = { id: req.params.id };
 
   db.Club.update({
-    where: condition,
     club_name: req.body.club_name,
     club_description: req.body.club_description,
     location_city: req.body.location_city,
@@ -44,6 +43,9 @@ router.put("/api/clubs/:id", function (req, res) {
     club_image_url: req.body.club_image_url,
     category: req.body.category,
     creator_id: req.body.creator_id
+  },
+  {
+    where: condition
   }).then(function (result) {
     res.json(result);
   });

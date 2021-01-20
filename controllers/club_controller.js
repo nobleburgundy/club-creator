@@ -12,6 +12,7 @@ router.get("/api/clubs", function (req, res) {
   });
 });
 
+// Create a new club
 router.post("/api/clubs", function (req, res) {
   db.Club.create({
     club_name: req.body.club_name,
@@ -45,6 +46,7 @@ router.post("/api/clubs/join/:id", function(req, res) {
   })
 })
 
+// api route for delete club by id
 router.delete("/api/clubs/:id", function (req, res) {
   const condition = { id: req.params.id };
   db.Club.destroy({ where: condition }, function (result) {

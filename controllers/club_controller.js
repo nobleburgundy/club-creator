@@ -26,7 +26,7 @@ router.get("/api/clubs", function (req, res) {
 router.get("/api/events", function (req, res) {
   // get route for getting all clubs
   const query = {};
-  db.Club.findAll({}).then(function (result) { // might need to change Club to reflect the right model
+  db.Event.findAll({}).then(function (result) { // might need to change Club to reflect the right model
     res.json(result);
   });
 });
@@ -56,7 +56,7 @@ router.get("/api/clubs/:id", function (req, res) {
 
 // View single event
 router.get("/api/event/:id", function (req, res) {
-  db.Club.findAll({ // might need to change Club to reflect the right model
+  db.Event.findAll({ // might need to change Club to reflect the right model
     where: {
       event_name: req.body.event_name // probably need to change thisreflect table/cells name
     }
@@ -64,8 +64,6 @@ router.get("/api/event/:id", function (req, res) {
     res.render("events", { event_name: [...data] }); // will need to change this once all handlebars are done
   });
 });
-
-
 
 
 
@@ -81,7 +79,7 @@ router.post("/api/clubs", function (req, res) {
 // Create a new event
 router.post("/api/events", function (req, res) {
   // might need to change Club to reflect the right model
-  db.Club.create({ event_name: req.body.event_name }).then(function (result) {
+  db.Event.create({ event_name: req.body.event_name }).then(function (result) {
     res.json(result);
   });
 });

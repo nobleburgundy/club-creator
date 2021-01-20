@@ -12,28 +12,6 @@ router.get("/api/clubs", function (req, res) {
   });
 });
 
-// html to show which club a user is in
-router.get("/api/users/:id", function (req, res) {
-  db.Club.findAll({ // might need to change Club to reflect the right model
-    where: {
-      users: req.body.users // probably need to change this reflect table/cells name
-    }
-  }).then(function (data) {
-    res.render("users", { clubs: [...data] }); // will need to change this once all handlebars are done
-  });
-});
-
-// View single club
-router.get("/api/clubs/:id", function (req, res) {
-  db.Club.findAll({ // might need to change Club to reflect the right model
-    where: {
-      club_name: req.body.club_name // probably need to change this reflect table/cells name
-    }
-  }).then(function (data) {
-    res.render("club", { club_name: [...data] }); // will need to change this once all handlebars are done
-  });
-});
-
 // Create a new club
 router.post("/api/clubs", function (req, res) {
   db.Club.create({

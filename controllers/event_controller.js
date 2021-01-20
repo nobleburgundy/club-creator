@@ -52,6 +52,10 @@ router.put("api/event/:id", function (req, res) {
     location_url: req.body.location_url,
     category: req.body.category,
     event_description: req.body.event_description
+  },{
+    where: {
+      id: req.params.id
+    }
   }).then(function (result) {
     res.json(result);
   });

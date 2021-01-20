@@ -40,6 +40,27 @@ router.post("/api/events", function (req, res) {
   });
 });
 
+//Update an event
+router.put("api/event/:id", function (req, res) {
+  // might need to change event to reflect the right model
+  db.Event.update({
+    event_name: req.body.event_name,
+    date_time: req.body.date_time,
+    location_city: req.body.location_city,
+    location_state: req.body.location_state,
+    location_zip: req.body.location_zip,
+    location_url: req.body.location_url,
+    category: req.body.category,
+    event_description: req.body.event_description
+  },{
+    where: {
+      id: req.params.id
+    }
+  }).then(function (result) {
+    res.json(result);
+  });
+});
+
 // Delete a Event
 router.delete("/api/event/:id", function (req, res) {
   const condition = { id: req.params.id };

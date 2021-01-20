@@ -69,5 +69,15 @@ module.exports = function (sequelize, DataTypes) {
     });
   };
 
+  Club.associate = function(models) {
+    models.Club.belongsToMany(models.User, {
+      through: "JoinedClubs",
+      foreignKey: {
+        name: "club_id",
+        allowNull: true
+      }
+    })
+  }
+
   return Club;
 };

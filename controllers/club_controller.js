@@ -6,8 +6,8 @@ const db = require("../models");
 // Club api routes
 router.get("/api/clubs", function (req, res) {
   // get route for getting all clubs
-  const query = {};
-  db.Club.findAll({}).then(function (result) {
+  // User model has a scope 'withoutPassword' to prevent passing password to client
+  db.Club.findAll({include: db.User.scope('withoutPassword')}).then(function (result) {
     res.json(result);
   });
 });
@@ -27,6 +27,23 @@ router.post("/api/clubs", function (req, res) {
     res.json(result);
   });
 });
+
+// Join Club Route
+// club_id in url param
+// user_id in body
+router.post("/api/clubs/join/:id", function(req, res) {
+  const condition = {id: req.params.id};
+  console.log(`user_id = ${req.body.user_id}\nclub_id = ${req.params.id}`);
+
+  db.JoinedClubs.create({
+    club_id: req.params.id,
+    user_id: req.body.user_id
+  }).then(function(result) {
+    res.json(result);
+  }).catch(function(error) {
+    res.status(400).json(error);
+  })
+})
 
 router.delete("/api/clubs/:id", function (req, res) {
   const condition = { id: req.params.id };

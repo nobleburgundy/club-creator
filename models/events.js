@@ -1,17 +1,17 @@
 module.exports = function (sequelize, DataTypes) {
-  let Club = sequelize.define("Club", {
-    club_name: {
+  let Event = sequelize.define("Event", {
+    event_name: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 155],
+        len: [1],
       },
     },
-    club_description: {
-      type: DataTypes.STRING,
+    date_time: {
+      type: DataTypes.DATE,
       allowNull: false,
       validate: {
-        len: [1, 255],
+        len: [1],
       },
     },
     location_city: {
@@ -35,17 +35,9 @@ module.exports = function (sequelize, DataTypes) {
         len: [5, 5],
       },
     },
-    online_base_url: {
+    location_url: {
       type: DataTypes.STRING,
-      allowNull: true,
-      validate: {
-        len: [1],
-        isUrl: true,
-      },
-    },
-    club_image_url: {
-      type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
       validate: {
         len: [1],
         isUrl: true,
@@ -58,26 +50,23 @@ module.exports = function (sequelize, DataTypes) {
         len: [1],
       },
     },
+    event_description: {
+      type: DataTypes.STRING,
+      allowNull: false,
+      validate: {
+        len: [1, 255],
+      },
+    },
   });
 
-  Club.associate = function (models) {
-    models.Club.hasMany(models.User, {
+  Event.associate = function (models) {
+    models.Event.belongsTo(models.Club, {
       foreignKey: {
-        name: "creator_id",
-        allowNull: true,
+        name: "club_id",
+        allowNull: false,
       },
     });
   };
 
-  Club.associate = function(models) {
-    models.Club.belongsToMany(models.User, {
-      through: "JoinedClubs",
-      foreignKey: {
-        name: "club_id",
-        allowNull: true
-      }
-    })
-  }
-
-  return Club;
+  return Event;
 };

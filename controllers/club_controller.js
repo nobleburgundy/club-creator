@@ -38,6 +38,30 @@ router.post("/api/clubs", function (req, res) {
   });
 });
 
+// updating a club by id
+router.put("/api/clubs/:id", function (req, res) {
+  let condition = { id: req.params.id };
+
+  db.Club.update(
+    {
+      club_name: req.body.club_name,
+      club_description: req.body.club_description,
+      location_city: req.body.location_city,
+      location_state: req.body.location_state,
+      location_zip: req.body.location_zip,
+      online_base_url: req.body.online_base_url,
+      club_image_url: req.body.club_image_url,
+      category: req.body.category,
+      creator_id: req.body.creator_id,
+    },
+    {
+      where: condition,
+    }
+  ).then(function (result) {
+    res.json(result);
+  });
+});
+
 // Join Club Route
 // club_id in url param
 // user_id in body

@@ -15,7 +15,7 @@ module.exports = function (app) {
   });
 
   app.get("/login", (req, res) => {
-    // If the user already has an account send them to the members page
+    // If the user already has an account send them to the home page
     if (req.user) {
       res.redirect("/index");
     }

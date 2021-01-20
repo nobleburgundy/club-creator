@@ -30,7 +30,7 @@ app.use(passport.session());
 
 // Requiring our routes
 require("./controllers/html-controller.js")(app);
-require("./controllers/api-controller.js")(app);
+require("./controllers/user-controller.js")(app);
 
 app.use(club_controller);
 

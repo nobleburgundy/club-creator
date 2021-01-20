@@ -7,7 +7,16 @@ const db = require("../models");
 router.get("/api/clubs", function (req, res) {
   // get route for getting all clubs
   // User model has a scope 'withoutPassword' to prevent passing password to client
-  db.Club.findAll({ include: db.User.scope('withoutPassword') }).then(function (result) {
+  db.Club.findAll({ include: db.User.scope("withoutPassword") }).then(function (result) {
+    res.json(result);
+  });
+});
+
+// Get clubs by user id
+router.get("/api/clubs/user/:id", function (req, res) {
+  db.Club.findAll({
+    include: { model: db.User.scope("withoutPassword"), as: "Users", where: { id: req.params.id } },
+  }).then(function (result) {
     res.json(result);
   });
 });
@@ -33,20 +42,22 @@ router.post("/api/clubs", function (req, res) {
 router.put("/api/clubs/:id", function (req, res) {
   let condition = { id: req.params.id };
 
-  db.Club.update({
-    club_name: req.body.club_name,
-    club_description: req.body.club_description,
-    location_city: req.body.location_city,
-    location_state: req.body.location_state,
-    location_zip: req.body.location_zip,
-    online_base_url: req.body.online_base_url,
-    club_image_url: req.body.club_image_url,
-    category: req.body.category,
-    creator_id: req.body.creator_id
-  },
-  {
-    where: condition
-  }).then(function (result) {
+  db.Club.update(
+    {
+      club_name: req.body.club_name,
+      club_description: req.body.club_description,
+      location_city: req.body.location_city,
+      location_state: req.body.location_state,
+      location_zip: req.body.location_zip,
+      online_base_url: req.body.online_base_url,
+      club_image_url: req.body.club_image_url,
+      category: req.body.category,
+      creator_id: req.body.creator_id,
+    },
+    {
+      where: condition,
+    }
+  ).then(function (result) {
     res.json(result);
   });
 });
@@ -60,13 +71,15 @@ router.post("/api/clubs/join/:id", function (req, res) {
 
   db.JoinedClubs.create({
     club_id: req.params.id,
-    user_id: req.body.user_id
-  }).then(function (result) {
-    res.json(result);
-  }).catch(function (error) {
-    res.status(400).json(error);
+    user_id: req.body.user_id,
   })
-})
+    .then(function (result) {
+      res.json(result);
+    })
+    .catch(function (error) {
+      res.status(400).json(error);
+    });
+});
 
 // api route for delete club by id
 router.delete("/api/clubs/:id", function (req, res) {

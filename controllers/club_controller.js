@@ -22,16 +22,6 @@ router.get("/api/clubs", function (req, res) {
   });
 });
 
-// show all events in api -- will need to change to show all clubs in a html page
-router.get("/api/events", function (req, res) {
-  // get route for getting all clubs
-  const query = {};
-  db.Event.findAll({}).then(function (result) { // might need to change Club to reflect the right model
-    res.json(result);
-  });
-});
-
-
 // html to show which club a user is in
 router.get("/api/users/:id", function (req, res) {
   db.Club.findAll({ // might need to change Club to reflect the right model
@@ -54,16 +44,6 @@ router.get("/api/clubs/:id", function (req, res) {
   });
 });
 
-// View single event
-router.get("/api/event/:id", function (req, res) {
-  db.Event.findAll({ // might need to change Club to reflect the right model
-    where: {
-      event_name: req.body.event_name // probably need to change thisreflect table/cells name
-    }
-  }).then(function (data) {
-    res.render("events", { event_name: [...data] }); // will need to change this once all handlebars are done
-  });
-});
 
 
 
@@ -76,13 +56,6 @@ router.post("/api/clubs", function (req, res) {
   });
 });
 
-// Create a new event
-router.post("/api/events", function (req, res) {
-  // might need to change Club to reflect the right model
-  db.Event.create({ event_name: req.body.event_name }).then(function (result) {
-    res.json(result);
-  });
-});
 
 // Create new user
 router.post("api/users", function (req, res) {

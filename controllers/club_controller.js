@@ -15,7 +15,7 @@ router.get("/api/clubs", function (req, res) {
 // Get clubs by user id
 router.get("/api/clubs/user/:id", function (req, res) {
   db.Club.findAll({
-    include: { model: db.User, as: "Users", where: { id: req.params.id } },
+    include: { model: db.User.scope("withoutPassword"), as: "Users", where: { id: req.params.id } },
   }).then(function (result) {
     res.json(result);
   });

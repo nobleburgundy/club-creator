@@ -44,10 +44,6 @@ router.get("/api/clubs/:id", function (req, res) {
   });
 });
 
-
-
-
-
 // Create a new club
 router.post("/api/clubs", function (req, res) {
   // might need to change Club to reflect the right model
@@ -56,7 +52,6 @@ router.post("/api/clubs", function (req, res) {
   });
 });
 
-
 // Create new user
 router.post("api/users", function (req, res) {
   // might need to change Club to reflect the right model
@@ -64,11 +59,6 @@ router.post("api/users", function (req, res) {
     res.json(result);
   });
 });
-
-
-
-
-
 
 // Delete a club
 router.delete("/api/clubs/:id", function (req, res) {

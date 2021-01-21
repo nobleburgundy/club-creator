@@ -5,12 +5,17 @@
   <div class="container">
     <h1 class="display-3" id="yio">You're in Orbit!</h1>
     <p class="lead" id="oss">One small step for man, one giant leap for digital interaction.</p>
-    <a href="#" class="btn btn-primary btn-lg" id="su">Sign Up</a>
+    {{#if this.loggedIn}}
+    <a href="/clubs" class="btn btn-primary btn-lg" id="su">Find Clubs!</a>
+    {{else}}
+    <a href="/signup" class="btn btn-primary btn-lg" id="su">Sign Up</a>
+    {{/if}}
+
   </div>
 
-<div class="container">
-  <img id="astro1" src="/../assets/img/Astro1.png"/>
-</div>
+  <div class="container">
+    <img id="astro1" src="/../assets/img/Astro1.png" />
+  </div>
 
 
   <div class="container" id="child-form-1">
@@ -25,11 +30,18 @@
 
 {{!-- BODY CONTENT --}}
 <div class="container" id="homepage-body-container">
-  <h2>Welcome <span class="member-name"></span></h2>
+  <h2>Welcome {{#if this.loggedIn}}<span class="member-name"></span>{{else}}
+    Astronaut!</a>
+    {{/if}}</h2>
 
-  <p>Orbit is here to help you gravitate towards clubs and organizations in your area and beyond. All groups and events on our page provide virtual and spaced out gatherings to make sure our users stay healthy.</p>
+  <p>Orbit is here to help you gravitate towards clubs and organizations in your area and beyond. All groups and events
+    on our page provide virtual and spaced out gatherings to make sure our users stay healthy.</p>
 
+  {{#if this.loggedIn}}
   <h3>Your Clubs:</h3>
+  {{else}}
+  <h3>Recent Clubs:</h3>
+  {{/if}}
 
   <div class="row">
     {{#each clubs}}
@@ -38,8 +50,7 @@
         <img class="card-img-top" src="http://placehold.it/500x325" alt="">
         <div class="card-body">
           <h4 class="card-title">{{this.dataValues.club_name}}</h4>
-          <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus
-            neque.</p>
+          <p class="card-text">{{this.dataValues.club_description}}</p>
         </div>
         <div class="card-footer">
           <a href="#" class="btn btn-primary">Gravitate!</a>

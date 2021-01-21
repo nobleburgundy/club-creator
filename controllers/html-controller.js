@@ -28,7 +28,7 @@ module.exports = function (app) {
   // specific club page
   app.get("/clubs/:id", (req, res) => {
     db.Club.findOne({ where: { id: req.params.id } }).then(function (data) {
-      res.render("club", data);
+      res.render("club_page", data);
     });
   });
 

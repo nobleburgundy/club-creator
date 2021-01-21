@@ -6,18 +6,10 @@ const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function (app) {
-  app.get("/", (req, res) => {
-    // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/index");
-    }
-    res.render("login");
-  });
-
   app.get("/login", (req, res) => {
     // If the user already has an account send them to the home page
     if (req.user) {
-      res.redirect("/index");
+      res.redirect("/");
     }
     res.render("login");
   });
@@ -32,11 +24,17 @@ module.exports = function (app) {
       res.render("clubs", { clubs: [...data] });
     });
   });
-  
+
+  // specific club page
+  app.get("/clubs/:id", (req, res) => {
+    db.Club.findOne({ where: { id: req.params.id } }).then(function (data) {
+      res.render("club", data);
+    });
+  });
 
   // Here we've add our isAuthenticated middleware to this route.
   // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get("/index", (req, res) => {
+  app.get("/", (req, res) => {
     // This will render only the clubs the user belongs to on the home "index" page (also / since redirect is in-place in html-controller)
     // req.user holds the user information after login
     let query = "";

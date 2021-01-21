@@ -21,56 +21,64 @@
     <script src="/assets/js/signup.js"></script>
 
 </head>
+
 <body>
 
-<nav class="navbar navbar-expand-lg  fixed-top">
-    <div class="container">
-        <a class="navbar-brand audiowide" href="#">Orbit</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    <a class="nav-link audiowide" href="/index">Home
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link audiowide" href="/about">About</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link audiowide" href="/login">Log-In</a>
-                </li>
-            </ul>
+    <nav class="navbar navbar-expand-lg  fixed-top">
+        <div class="container">
+            <a class="navbar-brand audiowide" href="/">Orbit</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link audiowide" href="/">Home
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link audiowide" href="/about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        {{#if this.loggedIn}}
+                        <a class="nav-link audiowide" href="/logout">Log-out</a>
+                        {{else}}
+                        <a class="nav-link audiowide" href="/login">Log-In</a>
+                        {{/if}}
+
+                        
+                    </li>
+                </ul>
+            </div>
         </div>
+    </nav>
     </div>
-</nav>
-</div>
 
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand audiowide" href="/logout">
-                Logout
-            </a>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand audiowide" href="/logout">
+                    Logout
+                </a>
+            </div>
         </div>
+    </nav>
+
+    <div class="body">
+        {{{ body }}}
     </div>
-</nav>
 
-<div class="body">
-    {{{ body }}}
-</div>
-
-<div>
-    <img id="astro2" src="/../assets/img/Astro2.png" />
-</div>
-
-<footer class="py-5">
-    <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Orbital 2020</p>
+    <div>
+        <img id="astro2" src="/../assets/img/Astro2.png" />
     </div>
-</footer>
+
+    <footer class="py-5">
+        <div class="container">
+            <p class="m-0 text-center text-white">Copyright &copy; Orbital 2020</p>
+        </div>
+    </footer>
 
 </body>
+
 </html>

@@ -40,10 +40,10 @@ module.exports = function (app) {
       query = { include: { model: db.User, as: "Users", where: { id: req.user.id } } };
     } else {
       // if not logged in, show all clubs
-      query = {};
+      query = { limit: 5, order:[["id", "DESC"]] };
     }
     db.Club.findAll(query).then(function (data) {
-      res.render("index", { clubs: [...data] });
+      res.render("index", { clubs: [...data], loggedIn: req.user });
     });
   });
 };

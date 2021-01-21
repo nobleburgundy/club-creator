@@ -6,18 +6,10 @@ const db = require("../models");
 const isAuthenticated = require("../config/middleware/isAuthenticated");
 
 module.exports = function (app) {
-  app.get("/", (req, res) => {
-    // If the user already has an account send them to the members page
-    if (req.user) {
-      res.redirect("/index");
-    }
-    res.render("login");
-  });
-
   app.get("/login", (req, res) => {
     // If the user already has an account send them to the home page
     if (req.user) {
-      res.redirect("/index");
+      res.redirect("/");
     }
     res.render("login");
   });
@@ -32,13 +24,25 @@ module.exports = function (app) {
       res.render("clubs", { clubs: [...data] });
     });
   });
-  
 
-  // Here we've add our isAuthenticated middleware to this route.
-  // If a user who is not logged in tries to access this route they will be redirected to the signup page
-  app.get("/index", isAuthenticated, (req, res) => {
-    db.Club.findAll({}).then(function (data) {
-      // render the values of the data with spread operator
+  // specific club page
+  app.get("/clubs/:id", (req, res) => {
+    db.Club.findOne({ where: { id: req.params.id } }).then(function (data) {
+      res.render("club_page", data);
+    });
+  });
+
+  app.get("/", (req, res) => {
+    // if logged in, show joined clubs
+    // if not logged in, show all clubs
+    let query = "";
+    if (req.user) {
+      query = { include: { model: db.User, as: "Users", where: { id: req.user.id } } };
+    } else {
+      // if not logged in, show all clubs
+      query = {};
+    }
+    db.Club.findAll(query).then(function (data) {
       res.render("index", { clubs: [...data] });
     });
   });

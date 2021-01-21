@@ -1,0 +1,25 @@
+<div class="container" id="all-clubs">
+    <div class="row">
+        <div class="col-md-6 mx-auto">
+            <img class="club-page-img center-block mx-auto" src="{{this.dataValues.club_image_url}}">
+            <h1 class="display-3 text-center">{{this.dataValues.club_name}}</h1>
+            <dl>
+                <dt>Description:</dt>
+                <dd>{{this.dataValues.club_description}}</dd>
+                <dt>Location:</dt>
+                {{!-- If there is a city and state, show that data, otherwise "Virtual" --}}
+                {{#if this.dataValues.location_city}}
+                <dd>{{this.dataValues.location_city}}, {{this.dataValues.location_state}}</dd>
+                {{else}}
+                <dd>Location: Virtual</dd>
+                {{/if}}
+                <dt>Base:</dt>
+                <dd><a href="{{this.dataValues.online_base_url}}" target="_blank">
+                        {{this.dataValues.online_base_url}}</a></dd>
+                <dt>Category:</dt>
+                <dd>{{this.dataValues.category}}</dd>
+            </dl>
+        </div>
+    </div>
+
+</div>

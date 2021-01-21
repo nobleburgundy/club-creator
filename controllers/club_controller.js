@@ -21,6 +21,15 @@ router.get("/api/clubs/user/:id", function (req, res) {
   });
 });
 
+// Get club by club id
+router.get("/api/clubs/:id", function (req, res) {
+  db.Club.findOne({
+    where: { id: req.params.id },
+  }).then(function (result) {
+    res.json(result);
+  });
+});
+
 // Create a new club
 router.post("/api/clubs", function (req, res) {
   db.Club.create({

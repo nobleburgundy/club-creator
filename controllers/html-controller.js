@@ -32,11 +32,9 @@ module.exports = function (app) {
     });
   });
 
-  // Here we've add our isAuthenticated middleware to this route.
-  // If a user who is not logged in tries to access this route they will be redirected to the signup page
   app.get("/", (req, res) => {
-    // This will render only the clubs the user belongs to on the home "index" page (also / since redirect is in-place in html-controller)
-    // req.user holds the user information after login
+    // if logged in, show joined clubs
+    // if not logged in, show all clubs
     let query = "";
     if (req.user) {
       query = { include: { model: db.User, as: "Users", where: { id: req.user.id } } };

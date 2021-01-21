@@ -1,67 +1,152 @@
 * {
-    font-family: 'Courier New', Courier, monospace;
-    font-weight: 100;
+  font-family: "Scope One", serif;
+  font-weight: 100;
 }
 
 /* TAGS */
-header {
-    
-}
-
-html, body {
-    height: 100%;
-}
-
+html,
 body {
-    
+  height: 100%;
+}
+
+h1 {
+  font-family: "Audiowide", cursive;
+}
+
+h2,
+h3 {
+  color: #4f2f79;
 }
 
 footer {
-    background-color: #666666 !important;
-    width: 100% !important;
-    position: absolute;
-    bottom: 0;
+  background-color: #666666 !important;
+  width: 100% !important;
+  position: relative;
+  bottom: 0;
 }
 
 /* CLASSES */
+.body {
+  /* background-color: red !important; */
+  width: 100% !important;
+  height: 100% !important;
+}
+
 .jumbotron {
-    background-image: url("../../assets/img/space1.jpg") !important;
-    background-size: 100% !important;
-    color: white;
-    margin-bottom: 0px !important;
-    background-position: center;
+  background-image: url("../../assets/img/space1.jpg") !important;
+  z-index: 0;
+  background-size: 100% !important;
+  color: white;
+  margin-bottom: 0px !important;
+  background-position: center;
+  width: 100% !important;
 }
 
 .btn {
-    background-color: #753e93 !important;
-    border-color: #753e93 !important;
-    color: white;
+  background-color: #753e93 !important;
+  border-color: #753e93 !important;
+  color: white;
 }
 
 .navbar {
-    background-color: #0f0f4b !important;
+  background-color: #0f0f4b !important;
 }
 
-.navbar-brand, .nav-link {
-    color: white;
+.navbar-brand,
+.nav-link {
+  color: white;
+}
+
+.category-btn {
+  margin: 10px;
+}
+
+.audiowide {
+  font-family: "Audiowide", cursive;
 }
 
 /* IDS */
 #child-form-1 {
-    position: relative;
-    bottom: -90px;
+  position: relative;
+  bottom: -90px;
 }
 
 #homepage-body-container {
-    margin-top: 50px;
+  margin-top: 50px;
+  margin-bottom: 50px;
 }
 
 #homepage-nav {
-    box-shadow: 1px 1px 1px 1px #666666;
+  box-shadow: 1px 1px 4px #666666;
+  background-color: white !important;
 }
 
+#astro1 {
+  position: absolute;
+  height: 300px;
+  width: auto;
+  top: 15%;
+  right: 20%;
+  bottom: 0;
+  z-index: 1;
+  transform: rotate(20deg);
+}
 
+@media screen and (max-width: 1024px) {
+  #astro1 {
+    position: absolute;
+    height: 10%;
+    width: auto;
+    max-height: 100% !important;
+    max-width: 100%;
+    top: 10%;
+    right: 5%;
+    bottom: 0%;
+    z-index: 1;
+    transform: rotate(20deg);
+    /* overflow: hidden; */
+  }
+}
 
+#astro2 {
+  height: 200px;
+  width: auto;
+  z-index: 1;
+  transform: rotate(45deg); 
+  position: relative;
+  top: 0;
+  left: -80px;
+  bottom: 0;
+  right: 0;
+  /* display: block; */
+  /* object-fit: fill; */
+}
+
+@media screen and (max-width: 1024px) {
+  #astro2 {
+    display: none;
+  }
+}
+
+#yio {
+  text-shadow: 1px 1px 4px #000000;
+}
+
+#oss {
+  font-weight: 900 !important;
+  text-shadow: 2px 2px #000000;
+}
+
+#su {
+  box-shadow: 1px 1px 6px #000000;
+}
+
+#stretch {
+  width: 70%;
+}
+
+/* Add later */
+/* Play with show on jumbotron. text-shadow: 1px 1px 4px #000000; */
 
 /* Colors */
 /* #0f0f4b

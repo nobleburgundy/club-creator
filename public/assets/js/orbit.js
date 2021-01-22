@@ -50,8 +50,9 @@ $(".create_club").on("submit", function (event) {
 });
 
 // Event listenner for update club
-$(".create_club").on("submit", function (event) {
+$(".update_club").on("submit", function (event) {
   club.preventDefault();
+  let id = $(this).data("id");
 
   let newClub = {
     club_name: $("#club_name").val().trim(),
@@ -64,7 +65,7 @@ $(".create_club").on("submit", function (event) {
     category: $("#category").val().trim(),
     creator_id: $("#creator_id").val().trim(),
   };
-  $.ajax("/api/clubs", {
+  $.ajax("/api/clubs" + id, {
     type: "PUT",
     data: newClub,
   }).then(function () {
@@ -75,8 +76,9 @@ $(".create_club").on("submit", function (event) {
 });
 
 // Event listenner for update event
-$(".create_event").on("submit", function (event) {
+$(".update_event").on("submit", function (event) {
   event.preventDefault();
+  let id = $(this).data("id");
 
   let newEvent = {
     event_name: $("#event_name").val().trim(),
@@ -88,7 +90,7 @@ $(".create_event").on("submit", function (event) {
     category: $("#category").val().trim(),
     event_description: $("#event_description").val().trim(),
   };
-  $.ajax("/api/events", {
+  $.ajax("/api/events" + id, {
     type: "PUT",
     data: newEvent,
   }).then(function () {

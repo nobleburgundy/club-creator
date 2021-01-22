@@ -1,0 +1,63 @@
+{{!-- Club Name
+Description
+Category (this should be a drop-down)
+City
+State
+Zip
+Base URL
+Club Img URL --}}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <h2>Sign Up Form</h2>
+            <form class="create-club">
+                <div class="form-group">
+                    <label for="New-Club">New Club</label>
+                    <input type="text" class="form-control" id="New-Club-input" placeholder="New-Club">
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">Description
+                        Category</label>
+                    <select name="category" class="form-control" id="category-input">
+                        <option value="food"> Food </option>
+                        <option value="music"> Music</option>
+                        <option value="games"> Games </option>
+                        <option value="social"> Social </option>
+                        <option value="volvo">Volvo</option>
+                        <option value="healthandfitness"> Health & Fitness </option>
+                        <option value="sports"> Sports </option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="city-Input"> city </label>
+                    <input type="text" class="form-control" id="city-input" placeholder="city">
+                </div>
+                <div class="form-group">
+                    <label for="state-input">State</label>
+                    <input type="text" class="form-control" id="state-input" placeholder="state">
+                </div>
+                <div class="form-group">
+                    <label for="zip-input"> Zip code </label>
+                    <input type="zip" maxlength="5" class="form-control" id="zip-input" placeholder="zip">
+                </div>
+
+                {{!-- Base URL not made --}}
+
+
+                {{!-- Club Img URL --} --}}
+
+                <img src="../img/orbit.jpg" alt="orbit" width="500" height="600">
+
+
+                <div style="display: none" id="alert" class="alert alert-danger" role="alert">
+                    <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
+                    <span class="sr-only">Error:</span> <span class="msg"></span>
+                </div>
+                <button type="submit" class="btn btn-default">Sign Up</button>
+            </form>
+            <br />
+            <p>Or log in <a href="/login">here</a></p>
+        </div>
+    </div>
+</div>

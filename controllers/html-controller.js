@@ -46,4 +46,10 @@ module.exports = function (app) {
       res.render("index", { clubs: [...data], loggedIn: req.user });
     });
   });
+
+  app.get("/create-club", (req, res) => {
+    res.render("createclub");
+  });
 };
+
+

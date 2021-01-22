@@ -1,6 +1,13 @@
 <div class="container" id="all-clubs">
     <h2>Available Clubs:</h2>
 
+    <nav class="navbar navbar-light bg-light mb-3" id="homepage-nav">
+        <form class="form-inline" id="search-form">
+            <input class="form-control mr-sm-2" id="stretch" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-primary" id="search-button" type="submit">Search</button>
+        </form>
+    </nav>
+
     <div class="row">
         {{#if clubs}}
         <div class="col-lg-3 col-md-6 mb-4">

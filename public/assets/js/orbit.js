@@ -19,10 +19,10 @@ $(".create_event").on("submit", function (event) {
 
 // Event listenner for create club
 $(".create_club").on("submit", function (event) {
-  event.preventDefault();
+  club.preventDefault();
 
-  let newEvent = {
-    event_name: $("#club_name").val().trim(),
+  let newClub = {
+    club_name: $("#club_name").val().trim(),
   };
   $.ajax("/api/clubs", {
     type: "POST",

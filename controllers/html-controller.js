@@ -31,11 +31,11 @@ module.exports = function (app) {
   });
 
   // category buttons route
-  app.get("/clubs/:category", (req, res) => {
+  app.get("/clubs/category/:category", (req, res) => {
     db.Club.findAll({
       where: {
-        category: req.params.category
-      }
+        category: req.params.category,
+      },
     }).then(function (data) {
       res.render("clubs", { clubs: [...data] });
     });

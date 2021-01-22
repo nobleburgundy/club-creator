@@ -1,101 +1,114 @@
 // Front-End jQuery Code
+$(document).ready(() => {
+  const searchForm = $("form#search-form");
+  const searchInput = $("input#stretch");
+  const searchButton = $("button#search-button");
 
-// Event listenner for create event
-$(".create_event").on("submit", function (event) {
-  event.preventDefault();
-
-  let newEvent = {
-    event_name: $("#event_name").val().trim(),
-    date_time: $("#data_time").val().trim(),
-    location_city: $("#location_city").val().trim(),
-    location_state: $("#location_state").val().trim(),
-    location_zip: $("#location_zip").val().trim(),
-    location_url: $("#location_url").val().trim(),
-    category: $("#category").val().trim(),
-    event_description: $("#event_description").val().trim(),
-  };
-  $.ajax("/api/events", {
-    type: "POST",
-    data: newEvent,
-  }).then(function () {
-    console.log("New event created");
-
-    location.reload();
+  searchForm.on("submit", (event) => {
+    event.preventDefault();
+    const query = searchInput.val();
+    // handlebars /search route will handle rendering the data, so just nav to
+    // /search with the query parameter
+    window.location.replace("/search?q=" + query);
   });
-});
 
-// Event listenner for create club
-$(".create_club").on("submit", function (event) {
-  club.preventDefault();
+  // Event listenner for create event
+  $(".create_event").on("submit", function (event) {
+    event.preventDefault();
 
-  let newClub = {
-    club_name: $("#club_name").val().trim(),
-    club_description: $("#club_description").val().trim(),
-    location_city: $("#location_city").val().trim(),
-    location_state: $("#location_state").val().trim(),
-    location_zip: $("#location_zip").val().trim(),
-    online_base_url: $("#online_base_url").val().trim(),
-    club_image_url: $("#club_image_url").val().trim(),
-    category: $("#category").val().trim(),
-    creator_id: $("#creator_id").val().trim(),
-  };
-  $.ajax("/api/clubs", {
-    type: "POST",
-    data: newClub,
-  }).then(function () {
-    console.log("New club created");
+    let newEvent = {
+      event_name: $("#event_name").val().trim(),
+      date_time: $("#data_time").val().trim(),
+      location_city: $("#location_city").val().trim(),
+      location_state: $("#location_state").val().trim(),
+      location_zip: $("#location_zip").val().trim(),
+      location_url: $("#location_url").val().trim(),
+      category: $("#category").val().trim(),
+      event_description: $("#event_description").val().trim(),
+    };
+    $.ajax("/api/events", {
+      type: "POST",
+      data: newEvent,
+    }).then(function () {
+      console.log("New event created");
 
-    location.reload();
+      location.reload();
+    });
   });
-});
 
-// Event listenner for update club
-$(".update_club").on("submit", function (event) {
-  club.preventDefault();
-  let id = $(this).data("id");
+  // Event listenner for create club
+  $(".create_club").on("submit", function (event) {
+    club.preventDefault();
 
-  let newClub = {
-    club_name: $("#club_name").val().trim(),
-    club_description: $("#club_description").val().trim(),
-    location_city: $("#location_city").val().trim(),
-    location_state: $("#location_state").val().trim(),
-    location_zip: $("#location_zip").val().trim(),
-    online_base_url: $("#online_base_url").val().trim(),
-    club_image_url: $("#club_image_url").val().trim(),
-    category: $("#category").val().trim(),
-    creator_id: $("#creator_id").val().trim(),
-  };
-  $.ajax("/api/clubs" + id, {
-    type: "PUT",
-    data: newClub,
-  }).then(function () {
-    console.log("Club updated");
+    let newClub = {
+      club_name: $("#club_name").val().trim(),
+      club_description: $("#club_description").val().trim(),
+      location_city: $("#location_city").val().trim(),
+      location_state: $("#location_state").val().trim(),
+      location_zip: $("#location_zip").val().trim(),
+      online_base_url: $("#online_base_url").val().trim(),
+      club_image_url: $("#club_image_url").val().trim(),
+      category: $("#category").val().trim(),
+      creator_id: $("#creator_id").val().trim(),
+    };
+    $.ajax("/api/clubs", {
+      type: "POST",
+      data: newClub,
+    }).then(function () {
+      console.log("New club created");
 
-    location.reload();
+      location.reload();
+    });
   });
-});
 
-// Event listenner for update event
-$(".update_event").on("submit", function (event) {
-  event.preventDefault();
-  let id = $(this).data("id");
+  // Event listenner for update club
+  $(".update_club").on("submit", function (event) {
+    club.preventDefault();
+    let id = $(this).data("id");
 
-  let newEvent = {
-    event_name: $("#event_name").val().trim(),
-    date_time: $("#data_time").val().trim(),
-    location_city: $("#location_city").val().trim(),
-    location_state: $("#location_state").val().trim(),
-    location_zip: $("#location_zip").val().trim(),
-    location_url: $("#location_url").val().trim(),
-    category: $("#category").val().trim(),
-    event_description: $("#event_description").val().trim(),
-  };
-  $.ajax("/api/events" + id, {
-    type: "PUT",
-    data: newEvent,
-  }).then(function () {
-    console.log("Event updated");
+    let newClub = {
+      club_name: $("#club_name").val().trim(),
+      club_description: $("#club_description").val().trim(),
+      location_city: $("#location_city").val().trim(),
+      location_state: $("#location_state").val().trim(),
+      location_zip: $("#location_zip").val().trim(),
+      online_base_url: $("#online_base_url").val().trim(),
+      club_image_url: $("#club_image_url").val().trim(),
+      category: $("#category").val().trim(),
+      creator_id: $("#creator_id").val().trim(),
+    };
+    $.ajax("/api/clubs" + id, {
+      type: "PUT",
+      data: newClub,
+    }).then(function () {
+      console.log("Club updated");
 
-    location.reload();
+      location.reload();
+    });
+  });
+
+  // Event listenner for update event
+  $(".update_event").on("submit", function (event) {
+    event.preventDefault();
+    let id = $(this).data("id");
+
+    let newEvent = {
+      event_name: $("#event_name").val().trim(),
+      date_time: $("#data_time").val().trim(),
+      location_city: $("#location_city").val().trim(),
+      location_state: $("#location_state").val().trim(),
+      location_zip: $("#location_zip").val().trim(),
+      location_url: $("#location_url").val().trim(),
+      category: $("#category").val().trim(),
+      event_description: $("#event_description").val().trim(),
+    };
+    $.ajax("/api/events" + id, {
+      type: "PUT",
+      data: newEvent,
+    }).then(function () {
+      console.log("Event updated");
+
+      location.reload();
+    });
   });
 });

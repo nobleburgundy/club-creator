@@ -21,8 +21,10 @@ h3 {
 footer {
   background-color: #666666 !important;
   width: 100% !important;
-  position: relative;
-  bottom: 0;
+  position: relative; 
+  bottom: 0; 
+  left: 0; 
+  right: 0;
 }
 
 /* CLASSES */
@@ -61,26 +63,38 @@ footer {
   margin: 10px;
 }
 
+.team-card{
+  margin: 10px;
+}
+
 .audiowide {
   font-family: "Audiowide", cursive;
 }
 
-/* IDS */
-#child-form-1 {
-  position: relative;
-  bottom: -90px;
-}
-
-#homepage-body-container {
+.page-body-container {
   margin-top: 50px;
   margin-bottom: 50px;
 }
 
-#homepage-nav {
+.child-nav {
+  position: relative;
+  bottom: -90px;
+}
+
+.planets {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 80%;
+}
+
+
+.homepage-nav {
   box-shadow: 1px 1px 4px #666666;
   background-color: white !important;
 }
 
+/* IDS */
 #astro1 {
   position: absolute;
   height: 300px;
@@ -128,6 +142,33 @@ footer {
   }
 }
 
+#astro3 {
+  position: absolute;
+  height: 300px;
+  width: auto;
+  top: 15%;
+  right: 20%;
+  bottom: 0;
+  z-index: 1;
+  transform: rotate(20deg);
+}
+
+@media screen and (max-width: 1024px) {
+  #astro3 {
+    position: absolute;
+    height: 10%;
+    width: auto;
+    max-height: 100% !important;
+    max-width: 100%;
+    top: 10%;
+    right: 5%;
+    bottom: 0%;
+    z-index: 1;
+    transform: rotate(20deg);
+    /* overflow: hidden; */
+  }
+}
+
 #yio {
   text-shadow: 1px 1px 4px #000000;
 }
@@ -143,6 +184,10 @@ footer {
 
 #stretch {
   width: 70%;
+}
+
+#main-nav {
+  box-shadow: 1px 1px 6px #000000;
 }
 
 /* Add later */

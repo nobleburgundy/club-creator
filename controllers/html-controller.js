@@ -18,9 +18,24 @@ module.exports = function (app) {
     res.render("signup");
   });
 
+  app.get("/about", (req, res) => {
+    res.render("about");
+  });
+
   // clubs page route
   app.get("/clubs", (req, res) => {
     db.Club.findAll({}).then(function (data) {
+      res.render("clubs", { clubs: [...data] });
+    });
+  });
+
+  // category buttons route
+  app.get("/clubs/:category", (req, res) => {
+    db.Club.findAll({
+      where: {
+        category: req.params.category
+      }
+    }).then(function (data) {
       res.render("clubs", { clubs: [...data] });
     });
   });

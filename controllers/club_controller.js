@@ -2,6 +2,7 @@ const express = require("express");
 const router = express.Router();
 const club = require("../models/club.js");
 const db = require("../models");
+const { Op } = require("sequelize");
 
 // Club api routes
 router.get("/api/clubs", function (req, res) {
@@ -25,6 +26,29 @@ router.get("/api/clubs/user/:id", function (req, res) {
 router.get("/api/clubs/:id", function (req, res) {
   db.Club.findOne({
     where: { id: req.params.id },
+  }).then(function (result) {
+    res.json(result);
+  });
+});
+
+// Get clubs by search term
+router.get("/api/search", function (req, res) {
+  const query = req.query.q;
+  // case insensitve search on club_name, club_description, or category
+  db.Club.findAll({
+    where: {
+      [Op.or]: [
+        {
+          club_name: { [Op.like]: `%${query}%` },
+        },
+        {
+          club_description: { [Op.like]: `%${query}%` },
+        },
+        {
+          category: { [Op.like]: `%${query}%` },
+        },
+      ],
+    },
   }).then(function (result) {
     res.json(result);
   });

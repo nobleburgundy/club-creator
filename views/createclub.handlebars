@@ -1,63 +1,55 @@
-{{!-- Club Name
-Description
-Category (this should be a drop-down)
-City
-State
-Zip
-Base URL
-Club Img URL --}}
-
 <div class="container">
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
-            <h2>Sign Up Form</h2>
-            <form class="create-club">
+            <h2>Create Club</h2>
+            <form class="create_club">
                 <div class="form-group">
-                    <label for="New-Club">New Club</label>
-                    <input type="text" class="form-control" id="New-Club-input" placeholder="New-Club">
+                    <label for="New-Club">Club Name</label>
+                    <input type="text" class="form-control" id="club_name" placeholder="Club Name" required>
                 </div>
                 <div class="form-group">
-                    <label for="exampleInputEmail1">Description
+                    <label for="club_description">Description</label>
+                    <input type="text" class="form-control" id="club_description" placeholder="Description" required>
+                </div>
+                <div class="form-group">
+                    <label for="exampleInputEmail1">
                         Category</label>
-                    <select name="category" class="form-control" id="category-input">
+                    <select name="category" class="form-control" id="category">
+                        <option value="art"> Art </option>
                         <option value="food"> Food </option>
                         <option value="music"> Music</option>
+                        <option value="books"> Books </option>
                         <option value="games"> Games </option>
                         <option value="social"> Social </option>
-                        <option value="volvo">Volvo</option>
+                        <option value="film&tv"> Film & TV </option>
                         <option value="healthandfitness"> Health & Fitness </option>
                         <option value="sports"> Sports </option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label for="city-Input"> city </label>
-                    <input type="text" class="form-control" id="city-input" placeholder="city">
+                    <label for="location_city"> City </label>
+                    <input type="text" class="form-control" id="location_city" placeholder="City" required>
                 </div>
                 <div class="form-group">
-                    <label for="state-input">State</label>
-                    <input type="text" class="form-control" id="state-input" placeholder="state">
+                    <label for="location_state">State</label>
+                    <input type="text" class="form-control" id="location_state" placeholder="State" required>
                 </div>
                 <div class="form-group">
-                    <label for="zip-input"> Zip code </label>
-                    <input type="zip" maxlength="5" class="form-control" id="zip-input" placeholder="zip">
+                    <label for="location_zip"> Zip Code </label>
+                    <input type="zip" maxlength="5" class="form-control" id="location_zip" placeholder="Zip Code"
+                        required>
                 </div>
-
-                {{!-- Base URL not made --}}
-
-
-                {{!-- Club Img URL --} --}}
-
-                <img src="../img/orbit.jpg" alt="orbit" width="500" height="600">
-
-
+                <div class="form-group">
+                    <label for="online_base_url"> Online Base URL </label>
+                    <input type="url" class="form-control" id="online_base_url" placeholder="Online Base URL">
+                </div>
+                {{!-- <img src="/../assets/img/orbit.jpg" alt="orbit" width="300" height="300"> --}}
                 <div style="display: none" id="alert" class="alert alert-danger" role="alert">
                     <span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>
                     <span class="sr-only">Error:</span> <span class="msg"></span>
                 </div>
-                <button type="submit" class="btn btn-default">Sign Up</button>
+                <button type="submit" class="btn btn-default"> Create </button>
             </form>
-            <br />
-            <p>Or log in <a href="/login">here</a></p>
         </div>
     </div>
 </div>

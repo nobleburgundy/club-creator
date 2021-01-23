@@ -24,7 +24,7 @@
 
 <body>
 
-    <nav class="navbar navbar-expand-lg  fixed-top">
+    <nav class="navbar navbar-expand-lg fixed-top" id="main-nav">
         <div class="container">
             <a class="navbar-brand audiowide" href="/">Orbit</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -47,7 +47,7 @@
                         <a class="nav-link audiowide" href="/login">Log-In</a>
                         {{/if}}
 
-                        
+
                     </li>
                 </ul>
             </div>
@@ -55,29 +55,20 @@
     </nav>
     </div>
 
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <a class="navbar-brand audiowide" href="/logout">
-                    Logout
-                </a>
-            </div>
-        </div>
-    </nav>
-
     <div class="body">
         {{{ body }}}
+
+        <footer class="py-5">
+            <div class="container">
+                <p class="m-0 text-center text-white">Copyright &copy; Orbital 2020</p>
+            </div>
+        </footer>
+
     </div>
 
     <div>
         <img id="astro2" src="/../assets/img/Astro2.png" />
     </div>
-
-    <footer class="py-5">
-        <div class="container">
-            <p class="m-0 text-center text-white">Copyright &copy; Orbital 2020</p>
-        </div>
-    </footer>
 
 </body>
 

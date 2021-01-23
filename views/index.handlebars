@@ -1,5 +1,3 @@
-<div class="container-fluid"></div>
-
 {{!-- HEADER --}}
 <header class="jumbotron jumbotron-fluid">
   <div class="container">
@@ -17,24 +15,26 @@
     <img id="astro1" src="/../assets/img/Astro1.png" />
   </div>
 
-
   <div class="container" id="child-form-1">
-    <nav class="navbar navbar-light bg-light" id="homepage-nav">
-      <form class="form-inline">
+
+    <nav class="navbar navbar-light bg-light  homepage-nav child-nav">
+      <form class="form-inline" id="search-form">
+
         <input class="form-control mr-sm-2" id="stretch" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-primary" type="submit">Search</button>
+        <button class="btn btn-primary" id="search-button" type="submit">Search</button>
       </form>
     </nav>
   </div>
 </header>
 
 {{!-- BODY CONTENT --}}
-<div class="container" id="homepage-body-container">
+<div class="container page-body-container">
   <h2>Welcome {{#if this.loggedIn}}<span class="member-name"></span>{{else}}
     Astronaut!</a>
     {{/if}}</h2>
 
-  <p>Orbit is here to help you gravitate towards clubs and organizations in your area and beyond. All groups and events
+  <p>Orbit is here to help you gravitate towards clubs and organizations in your area and beyond. All groups and
+    events
     on our page provide virtual and spaced out gatherings to make sure our users stay healthy.</p>
 
   {{#if this.loggedIn}}
@@ -65,21 +65,21 @@
   <h3>Group &amp; Event Categories:</h3>
 
   <div class="row align-items-center">
-    <div class="btn col category-btn align-self-center" href="#"><i class="fas fa-palette"></i> Art</div>
-    <div class="btn col category-btn align-self-center" href="#"><i class="fas fa-book"></i> Books</div>
-    <div class="btn col category-btn align-self-center" href="#"><i class="fas fa-film"></i> Film &amp; TV</div>
+    <a class="btn col category-btn align-self-center" href="/clubs/category/art"><i class="fas fa-palette"></i> Art</a>
+    <a class="btn col category-btn align-self-center" href="/clubs/category/books"><i class="fas fa-book"></i> Books</a>
+    <a class="btn col category-btn align-self-center" href="/clubs/category/film"><i class="fas fa-film"></i> Film &amp; TV</a>
   </div>
 
   <div class="row align-items-center">
-    <div class="btn col category-btn align-self-center" href="#"><i class="fas fa-utensils"></i> Food</div>
-    <div class="btn col category-btn align-self-center" href="#"><i class="fas fa-gamepad"></i> Games</div>
-    <div class="btn col category-btn align-self-center" href="#"><i class="fas fa-spa"></i> Health &amp; Fitness</div>
+    <a class="btn col category-btn align-self-center" href="/clubs/category/food"><i class="fas fa-utensils"></i> Food</a>
+    <a class="btn col category-btn align-self-center" href="/clubs/category/games"><i class="fas fa-gamepad"></i> Games</a>
+    <a class="btn col category-btn align-self-center" href="/clubs/category/health"><i class="fas fa-spa"></i> Health &amp; Fitness</a>
   </div>
 
   <div class="row align-items-center">
-    <div class="btn col category-btn align-self-center" href="#"><i class="fas fa-guitar"></i> Music</div>
-    <div class="btn col category-btn align-self-center" href="#"><i class="fas fa-comment"></i> Social</div>
-    <div class="btn col category-btn align-self-center" href="#"><i class="fas fa-futbol"></i> Sports</div>
+    <a class="btn col category-btn align-self-center" href="/clubs/category/music"><i class="fas fa-guitar"></i> Music</a>
+    <a class="btn col category-btn align-self-center" href="/clubs/category/social"><i class="fas fa-comment"></i> Social</a>
+    <a class="btn col category-btn align-self-center" href="/clubs/category/sports"><i class="fas fa-futbol"></i> Sports</a>
   </div>
 
 </div>

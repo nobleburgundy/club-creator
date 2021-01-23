@@ -1,12 +1,13 @@
 {{!-- HEADER --}}
 <header class="jumbotron jumbotron-fluid">
-  <div class="container">
+  <div class="container" style="margin-top: 65px">
     <h1 class="display-3" id="yio">You're in Orbit!</h1>
     <p class="lead" id="oss">One small step for man, one giant leap for digital interaction.</p>
     {{#if this.loggedIn}}
-    <a href="/clubs" class="btn btn-primary btn-lg" id="su">Find Clubs!</a>
+    <a href="/clubs" class="btn btn-primary btn-lg su">Find Clubs!</a>
+    <a href="/createclub" class="btn btn-primary btn-lg su">Create a club here!</a>
     {{else}}
-    <a href="/signup" class="btn btn-primary btn-lg" id="su">Sign Up</a>
+    <a href="/signup" class="btn btn-primary btn-lg su">Sign Up</a>
     {{/if}}
 
   </div>

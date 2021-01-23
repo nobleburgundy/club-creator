@@ -10,10 +10,10 @@
 
     <div class="row">
         {{#if clubs}}
-        <div class="col-lg-3 col-md-6 mb-4">
+        {{!-- <div class="col-lg-3 col-md-6 mb-4"> --}}
             {{#each clubs}}
-            <div class="card h-100">
-                <img class="card-img-top" src={{this.dataValues.club_image_url}} alt="placeholder">
+            <div class="card col-lg-3">
+                <img class="card-img-top" src="{{this.dataValues.club_image_url}}" alt="placeholder">
                 <div class="card-body">
                     <h4 class="card-title"><a href="/clubs/{{this.dataValues.id}}">{{this.dataValues.club_name}}</a>
                     </h4>
@@ -31,7 +31,7 @@
             <div class="d-block">
                 <a href="/createclub" class="btn btn-primary">Create a club here!</a>
             </div>
-        </div>
+        {{!-- </div> --}}
         {{/if}}
     </div>
 

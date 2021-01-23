@@ -86,4 +86,8 @@ module.exports = function (app) {
       res.render("clubs", { clubs: [...data] });
     });
   });
+
+  app.get("/createclub", (req, res) => {
+    res.render("createclub");
+  });
 };

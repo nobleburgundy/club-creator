@@ -94,6 +94,10 @@ footer {
   background-color: white !important;
 }
 
+.su {
+  box-shadow: 1px 1px 6px #000000;
+}
+
 /* IDS */
 #astro1 {
   position: absolute;
@@ -176,10 +180,6 @@ footer {
 #oss {
   font-weight: 900 !important;
   text-shadow: 2px 2px #000000;
-}
-
-#su {
-  box-shadow: 1px 1px 6px #000000;
 }
 
 #stretch {

@@ -55,7 +55,7 @@ router.get("/api/search", function (req, res) {
 });
 
 // Create a new club
-router.post("/api/clubs", function (req, res) {
+router.post("/createclub", function (req, res) {
   db.Club.create({
     club_name: req.body.club_name,
     club_description: req.body.club_description,

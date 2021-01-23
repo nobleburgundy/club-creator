@@ -112,9 +112,10 @@ $(document).ready(() => {
     });
   });
 
-  $("#gravitate").on("click", function (event) {
+  $(".gravitate").on("click", function (event) {
     let clubid = $(this).data("id");
     console.log("club id " + clubid);
+    // get user id via api call
     $.get("/api/user_data").then((data) => {
       let newJoin = {
         user_id: data.id,
@@ -125,7 +126,6 @@ $(document).ready(() => {
         data: newJoin,
       }).then(function () {
         console.log("Club joined " + newJoin);
-        //location.replace("/");
       });
     });
   });

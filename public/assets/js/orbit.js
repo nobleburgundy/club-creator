@@ -111,4 +111,22 @@ $(document).ready(() => {
       location.reload();
     });
   });
+
+  $("#gravitate").on("click", function (event) {
+    let clubid = $(this).data("id");
+    console.log("club id " + clubid);
+    $.get("/api/user_data").then((data) => {
+      let newJoin = {
+        user_id: data.id,
+      };
+
+      $.ajax("/api/clubs/join/" + clubid, {
+        type: "POST",
+        data: newJoin,
+      }).then(function () {
+        console.log("Club joined " + newJoin);
+        //location.replace("/");
+      });
+    });
+  });
 });

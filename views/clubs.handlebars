@@ -1,12 +1,16 @@
 <div class="container" id="all-clubs" style="margin-top: 65px">
-    <h2>Available Clubs:</h2>
 
     <nav class="navbar navbar-light bg-light mb-3" id="homepage-nav">
         <form class="form-inline" id="search-form">
             <input class="form-control mr-sm-2" id="stretch" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-primary" id="search-button" type="submit">Search</button>
         </form>
+        {{#if this.loggedIn}}
+        <a href="/createclub" class="btn btn-primary float-right">Create a club here!</a>
+        {{/if}}
     </nav>
+
+    <h2>Available Clubs:</h2>
 
     <div class="row">
         {{#if clubs}}
@@ -19,31 +23,29 @@
                     </h4>
                     <p class="card-text">{{this.dataValues.club_description}}</p>
                 </div>
+                {{#if ../this.loggedIn}}
                 <div class="card-footer">
-                    {{#if ../this.loggedIn}}
-                    <a href="/clubs/{{this.dataValues.id}}" class="btn btn-primary w-100 px-5">Go!</a>
-                    {{else}}
                     <a href="/clubs/{{this.dataValues.id}}" class="btn btn-primary w-100 gravitate"
                         data-id="{{this.dataValues.id}}">Gravitate!</a>
-                    {{/if}}
                 </div>
+                {{/if}}
             </div>
         </div>
         {{/each}}
+        {{#if this.loggedIn}}
+        {{else}}
+        <h4><a href="/login">Login</a>, or <a href="/signup">sign up</a> to create, or join clubs.</h4>
+        {{/if}}
         {{else}}
         <div class="col-md-12">
             <div class="w-100">
                 <h3>No clubs under that category currently exist, why dont you go make one?</h3>
+                {{#if this.loggedIn}}
+                <h4><a href="/createclub">Create a club here!</a></h4>
+                {{else}}
+                <h4><a href="/login">Login</a>, or <a href="/signup">sign up</a> to create clubs.</h4>
+                {{/if}}
             </div>
-            {{#if this.loggedIn}}
-            <div class="mb-5">
-                <a href="/createclub" class="btn btn-primary">Create a club here!</a>
-            </div>
-            {{else}}
-            <div class="mb-5">
-                <h4><a href="/login">Login</a>, or <a href="/signup">sign up</a> to create or join clubs.</h4>
-            </div>
-            {{/if}}
         </div>
         {{/if}}
     </div>

@@ -48,16 +48,16 @@
     {{#each clubs}}
     <div class="col-lg-3 col-md-6 mb-4">
       <div class="card h-100">
-        <img class="card-img-top" src="/../assets/img/default_card_img.png" alt="">
+        <img class="card-img-top" src="/../assets/img/default_club_img.png" alt="">
         <div class="card-body">
           <h4 class="card-title"><a href="/clubs/{{this.dataValues.id}}">{{this.dataValues.club_name}}</a></h4>
           <p class="card-text">{{this.dataValues.club_description}}</p>
         </div>
         <div class="card-footer">
           {{#if ../this.loggedIn}}
-          <a href="/clubs/{{this.dataValues.id}}" class="btn btn-primary">Go!</a>
+          <a href="/clubs/{{this.dataValues.id}}" class="btn btn-primary float-right px-5">Go!</a>
           {{else}}
-          <a href="/clubs/{{this.dataValues.id}}" class="btn btn-primary gravitate"
+          <a href="/clubs/{{this.dataValues.id}}" class="btn btn-primary float-right gravitate"
             data-id="{{this.dataValues.id}}">Gravitate!</a>
           {{/if}}
         </div>

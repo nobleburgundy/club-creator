@@ -40,7 +40,7 @@ $(document).ready(() => {
   $(".create_club").on("submit", function (event) {
     event.preventDefault();
 
-    const defaultCardImg = "/../assets/img/default_card_img.png";
+    const defaultCardImg = "/../assets/img/default_club_img.png";
 
     let newClub = {
       club_name: $("#club_name").val().trim(),

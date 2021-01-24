@@ -12,7 +12,7 @@
         {{#if clubs}}
         {{#each clubs}}
         <div class="card col-lg-3">
-            <img class="card-img-top" src="/../assets/img/default_card_img.png" alt="placeholder">
+            <img class="card-img-top" src="/../assets/img/default_club_img.png" alt="placeholder">
             <div class="card-body">
                 <h4 class="card-title"><a href="/clubs/{{this.dataValues.id}}">{{this.dataValues.club_name}}</a>
                 </h4>
@@ -29,7 +29,7 @@
             <div class="w-100">
                 <h3>No clubs under that category currently exist, why dont you go make one?</h3>
             </div>
-            {{#if ../this.loggedIn}}
+            {{#if this.loggedIn}}
             <div class="mb-5">
                 <a href="/createclub" class="btn btn-primary">Create a club here!</a>
             </div>

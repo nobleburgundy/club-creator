@@ -48,7 +48,6 @@ module.exports = function (sequelize, DataTypes) {
       allowNull: true,
       validate: {
         len: [1],
-        isUrl: true,
       },
     },
     category: {
@@ -69,15 +68,15 @@ module.exports = function (sequelize, DataTypes) {
     });
   };
 
-  Club.associate = function(models) {
+  Club.associate = function (models) {
     models.Club.belongsToMany(models.User, {
       through: "JoinedClubs",
       foreignKey: {
         name: "club_id",
-        allowNull: true
-      }
-    })
-  }
+        allowNull: true,
+      },
+    });
+  };
 
   return Club;
 };

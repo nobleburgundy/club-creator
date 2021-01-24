@@ -29,9 +29,15 @@
             <div class="w-100">
                 <h3>No clubs under that category currently exist, why dont you go make one?</h3>
             </div>
+            {{#if ../this.loggedIn}}
             <div class="mb-5">
                 <a href="/createclub" class="btn btn-primary">Create a club here!</a>
             </div>
+            {{else}}
+            <div class="mb-5">
+                <h4><a href="/login">Login</a>, or <a href="/signup">sign up</a> to create or join clubs.</h4>
+            </div>
+            {{/if}}
         </div>
         {{/if}}
     </div>

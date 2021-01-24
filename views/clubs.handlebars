@@ -10,26 +10,27 @@
 
     <div class="row">
         {{#if clubs}}
-            {{#each clubs}}
-            <div class="card col-lg-3">
-                <img class="card-img-top" src="{{this.dataValues.club_image_url}}" alt="placeholder">
-                <div class="card-body">
-                    <h4 class="card-title"><a href="/clubs/{{this.dataValues.id}}">{{this.dataValues.club_name}}</a>
-                    </h4>
-                    <p class="card-text">{{this.dataValues.club_description}}</p>
-                </div>
-                <div class="card-footer">
-                    <a href="#" class="btn btn-primary" data-id={{this.dataValues.id}}>Gravitate!</a>
-                </div>
+        {{#each clubs}}
+        <div class="card col-lg-3">
+            <img class="card-img-top" src="/../assets/img/default_card_img.png" alt="placeholder">
+            <div class="card-body">
+                <h4 class="card-title"><a href="/clubs/{{this.dataValues.id}}">{{this.dataValues.club_name}}</a>
+                </h4>
+                <p class="card-text">{{this.dataValues.club_description}}</p>
             </div>
-            {{/each}}
-            {{else}}
-            <div class="d-block">
-                <h3>No clubs under that category currently exist, why dont you go make one?</h3>
+            <div class="card-footer">
+                <a href="/clubs/{{this.dataValues.id}}" class="btn btn-primary gravitate"
+                    data-id="{{this.dataValues.id}}">Gravitate!</a>
             </div>
-            <div class="d-block">
-                <a href="/createclub" class="btn btn-primary">Create a club here!</a>
-            </div>
+        </div>
+        {{/each}}
+        {{else}}
+        <div class="d-block">
+            <h3>No clubs under that category currently exist, why dont you go make one?</h3>
+        </div>
+        <div class="d-block">
+            <a href="/createclub" class="btn btn-primary">Create a club here!</a>
+        </div>
         {{/if}}
     </div>
 </div>

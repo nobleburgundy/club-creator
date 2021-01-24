@@ -1,7 +1,7 @@
 <div class="container" id="all-clubs" style="margin-top: 65px">
     <div class="row">
         <div class="col-md-6 mx-auto">
-            <img class="club-page-img center-block mx-auto" src="{{this.dataValues.club_image_url}}">
+            <img class="club-page-img center-block mx-auto w-100" src="../assets/img/default_card_img.png">
             <h1 class="display-3 text-center">{{this.dataValues.club_name}}</h1>
             <dl>
                 <dt>Description:</dt>
@@ -19,8 +19,9 @@
                 <dt>Category:</dt>
                 <dd>{{this.dataValues.category}}</dd>
             </dl>
-            <div class="card-footer">
-                <a href="#" class="btn btn-primary" data-id={{this.dataValues.id}}>Gravitate!</a>
+            <div class="card-footer" data-club-id="{{this.dataValues.id}}">
+                <a href="/clubs/{{this.dataValues.id}}" data-id="{{this.dataValues.id}}"
+                    class="btn btn-primary gravitate">Gravitate!</a>
             </div>
         </div>
     </div>

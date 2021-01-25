@@ -12,11 +12,16 @@
 
     {{!-- If coming from Your Clubs, display this.header (from html-controller >> /yourclubs) --}}
     {{!-- default to Available Clubs: --}}
-    {{#if this.header}}
-    <h2>{{this.header}}</h2>
-    {{else}}
-    <h2>Available Clubs:</h2>
-    {{/if}}
+    <div class="row">
+        <div class="col-lg-12">
+            {{#if this.header}}
+            <h2 class="d-inline">{{this.header}}</h2>
+            <a href="/clubs" class="float-right">View all clubs</a>
+            {{else}}
+            <h2>Available Clubs:</h2>
+            {{/if}}
+        </div>
+    </div>
 
     <div class="row">
         {{#if clubs}}

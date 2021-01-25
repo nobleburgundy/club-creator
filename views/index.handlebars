@@ -36,12 +36,18 @@
   <p>Orbit is here to help you gravitate towards clubs and organizations in your area and beyond. All groups and
     events
     on our page provide virtual and spaced out gatherings to make sure our users stay healthy.</p>
-  <a href="/clubs" class="float-right">View all clubs</a>
-  {{#if this.loggedIn}}
-  <h3><a href="/yourclubs">Your Clubs:</a></h3>
-  {{else}}
-  <h3>Recent Clubs:</h3>
-  {{/if}}
+
+  {{!-- Your Clubs/Recent Clubs/View all clubs row --}}
+  <div class="row">
+    <div class="col-lg-12">
+      {{#if this.loggedIn}}
+      <h3 class="d-inline"><a href="/yourclubs">Your Clubs:</a></h3>
+      {{else}}
+      <h3 class="d-inline">Recent Clubs:</h3>
+      {{/if}}
+      <a href="/clubs" class="float-right">View all clubs</a>
+    </div>
+  </div>
 
   <div class="row">
     {{#each clubs}}

@@ -20,7 +20,6 @@
 
     <nav class="navbar navbar-light bg-light  homepage-nav child-nav">
       <form class="form-inline" id="search-form">
-
         <input class="form-control mr-sm-2" id="stretch" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-primary" id="search-button" type="submit">Search</button>
       </form>
@@ -38,23 +37,34 @@
     events
     on our page provide virtual and spaced out gatherings to make sure our users stay healthy.</p>
 
-  {{#if this.loggedIn}}
-  <h3>Your Clubs:</h3>
-  {{else}}
-  <h3>Recent Clubs:</h3>
-  {{/if}}
+  {{!-- Your Clubs/Recent Clubs/View all clubs row --}}
+  <div class="row">
+    <div class="col-lg-12">
+      {{#if this.loggedIn}}
+      <h3 class="d-inline"><a href="/yourclubs">Your Clubs:</a></h3>
+      {{else}}
+      <h3 class="d-inline">Recent Clubs:</h3>
+      {{/if}}
+      <a href="/clubs" class="float-right">View all clubs</a>
+    </div>
+  </div>
 
   <div class="row">
     {{#each clubs}}
     <div class="col-lg-3 col-md-6 mb-4">
       <div class="card h-100">
-        <img class="card-img-top" src="http://placehold.it/500x325" alt="">
+        <img class="card-img-top" src="/../assets/img/default_club_img.png" alt="">
         <div class="card-body">
           <h4 class="card-title"><a href="/clubs/{{this.dataValues.id}}">{{this.dataValues.club_name}}</a></h4>
           <p class="card-text">{{this.dataValues.club_description}}</p>
         </div>
         <div class="card-footer">
-          <a href="/clubs/{{this.dataValues.id}}" class="btn btn-primary gravitate">Gravitate!</a>
+          {{#if ../this.loggedIn}}
+          <a href="/clubs/{{this.dataValues.id}}" class="btn btn-primary w-100 px-5">Go!</a>
+          {{else}}
+          <a href="/clubs/{{this.dataValues.id}}" class="btn btn-primary w-100 gravitate"
+            data-id="{{this.dataValues.id}}">Gravitate!</a>
+          {{/if}}
         </div>
       </div>
     </div>

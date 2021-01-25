@@ -38,7 +38,9 @@ $(document).ready(() => {
 
   // Event listenner for create club
   $(".create_club").on("submit", function (event) {
-    club.preventDefault();
+    event.preventDefault();
+
+    const defaultCardImg = "/../assets/img/default_club_img.png";
 
     let newClub = {
       club_name: $("#club_name").val().trim(),
@@ -47,17 +49,16 @@ $(document).ready(() => {
       location_state: $("#location_state").val().trim(),
       location_zip: $("#location_zip").val().trim(),
       online_base_url: $("#online_base_url").val().trim(),
-      club_image_url: $("#club_image_url").val().trim(),
+      club_image_url: defaultCardImg,
       category: $("#category").val().trim(),
-      creator_id: $("#creator_id").val().trim(),
     };
+    console.log(newClub);
     $.ajax("/api/clubs", {
       type: "POST",
       data: newClub,
-    }).then(function () {
+    }).then(function (data) {
       console.log("New club created");
-
-      location.reload();
+      location.replace(`/clubs/${data.id}`);
     });
   });
 
@@ -112,6 +113,7 @@ $(document).ready(() => {
     });
   });
 
+  // Event listener for joining a club
   $(".gravitate").on("click", function (event) {
     let clubid = $(this).data("id");
     console.log("club id " + clubid);

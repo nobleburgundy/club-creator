@@ -5,44 +5,61 @@
             <input class="form-control mr-sm-2" id="stretch" type="search" placeholder="Search" aria-label="Search">
             <button class="btn btn-primary" id="search-button" type="submit">Search</button>
         </form>
+        {{#if this.loggedIn}}
+        <a href="/createclub" class="btn btn-primary float-right">Create a club here!</a>
+        {{/if}}
     </nav>
 
-    <h2>Available Clubs:</h2>
+    {{!-- If coming from Your Clubs, display this.header (from html-controller >> /yourclubs) --}}
+    {{!-- default to Available Clubs: --}}
+    <div class="row">
+        <div class="col-lg-12">
+            {{#if this.header}}
+            <h2 class="d-inline">{{this.header}}</h2>
+            <a href="/clubs" class="float-right">View all clubs</a>
+            {{else}}
+            <h2>Available Clubs:</h2>
+            {{/if}}
+        </div>
+    </div>
 
     <div class="row">
         {{#if clubs}}
         {{#each clubs}}
-        <div class="card col-lg-3">
-            <img class="card-img-top" src="{{this.dataValues.club_image_url}}" alt="placeholder">
-            <div class="card-body">
-                <h4 class="card-title"><a href="/clubs/{{this.dataValues.id}}">{{this.dataValues.club_name}}</a>
-                </h4>
-                <p class="card-text">{{this.dataValues.club_description}}</p>
-            </div>
-            <div class="card-footer">
-                <a href="#" class="btn btn-primary" data-id={{this.dataValues.id}}>Gravitate!</a>
+        <div class="col-lg-3 col-md-6 mb-4">
+            <div class="card h-100">
+                <img class="card-img-top" src="/../assets/img/default_club_img.png" alt="">
+                <div class="card-body">
+                    <h4 class="card-title"><a href="/clubs/{{this.dataValues.id}}">{{this.dataValues.club_name}}</a>
+                    </h4>
+                    <p class="card-text">{{this.dataValues.club_description}}</p>
+                </div>
+                {{#if ../this.loggedIn}}
+                <div class="card-footer">
+                    <a href="/clubs/{{this.dataValues.id}}" class="btn btn-primary w-100 gravitate"
+                        data-id="{{this.dataValues.id}}">Gravitate!</a>
+                </div>
+                {{/if}}
             </div>
         </div>
         {{/each}}
-        {{else}}
-        <div class="d-block">
+    </div>
+    {{#if this.loggedIn}}
+    {{else}}
+    <div class="row">
+        <h4><a href="/login">Login</a>, or <a href="/signup">sign up</a> to create, or join clubs.</h4>
+    </div>
+    {{/if}}
+    {{else}}
+    <div class="col-md-12">
+        <div class="w-100">
             <h3>No clubs under that category currently exist, why dont you go make one?</h3>
-        </div>
-        <div class="d-block">
-            <a href="/createclub" class="btn btn-primary">Create a club here!</a>
-        </div>
-        {{/if}}
-
-        <div class="d-block">
             {{#if this.loggedIn}}
-            <div class="mb-5">
-                <a href="/createclub" class="btn btn-primary">Create a club here!</a>
-            </div>
+            <h4><a href="/createclub">Create a club here!</a></h4>
             {{else}}
-            <div class="mb-5">
-                <h4><a href="/login">Login</a>, or <a href="/signup">sign up</a> to create or join clubs.</h4>
-            </div>
+            <h4><a href="/login">Login</a>, or <a href="/signup">sign up</a> to create clubs.</h4>
             {{/if}}
         </div>
     </div>
+    {{/if}}
 </div>

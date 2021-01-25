@@ -20,13 +20,13 @@ module.exports = function (app) {
   });
 
   app.get("/about", (req, res) => {
-    res.render("about");
+    res.render("about", { loggedIn: req.user });
   });
 
   // clubs page route
   app.get("/clubs", (req, res) => {
     db.Club.findAll({}).then(function (data) {
-      res.render("clubs", { clubs: [...data] });
+      res.render("clubs", { clubs: [...data], loggedIn: req.user });
     });
   });
 
@@ -37,13 +37,16 @@ module.exports = function (app) {
         category: req.params.category,
       },
     }).then(function (data) {
-      res.render("clubs", { clubs: [...data] });
+      res.render("clubs", { clubs: [...data], loggedIn: req.user });
     });
   });
 
   // specific club page
   app.get("/clubs/:id", (req, res) => {
     db.Club.findOne({ where: { id: req.params.id } }).then(function (data) {
+      // also want to pass in login status via req.user,
+      // so add that key.value to 'data' object
+      data.loggedIn = req.user;
       res.render("club_page", data);
     });
   });
@@ -60,6 +63,14 @@ module.exports = function (app) {
     }
     db.Club.findAll(query).then(function (data) {
       res.render("index", { clubs: [...data], loggedIn: req.user });
+    });
+  });
+
+  app.get("/yourclubs", (req, res) => {
+    // when navigating to 'yourclubs' render the 'clubs' page, but only with the User's joined clubs
+    const query = { include: { model: db.User, as: "Users", where: { id: req.user.id } } };
+    db.Club.findAll(query).then(function (data) {
+      res.render("clubs", { clubs: [...data], loggedIn: req.user, header: "Your Clubs:" });
     });
   });
 
@@ -82,12 +93,11 @@ module.exports = function (app) {
         ],
       },
     }).then(function (data) {
-      console.log("TESTING");
-      res.render("clubs", { clubs: [...data] });
+      res.render("clubs", { clubs: [...data], loggedIn: req.user });
     });
   });
 
   app.get("/createclub", (req, res) => {
-    res.render("createclub");
+    res.render("createclub", { loggedIn: req.user });
   });
 };

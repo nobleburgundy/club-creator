@@ -10,7 +10,13 @@
         {{/if}}
     </nav>
 
+    {{!-- If coming from Your Clubs, display this.header (from html-controller >> /yourclubs) --}}
+    {{!-- default to Available Clubs: --}}
+    {{#if this.header}}
+    <h2>{{this.header}}</h2>
+    {{else}}
     <h2>Available Clubs:</h2>
+    {{/if}}
 
     <div class="row">
         {{#if clubs}}

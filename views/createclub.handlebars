@@ -6,11 +6,11 @@
             <form class="create_club">
                 <div class="form-group">
                     <label for="New-Club">Club Name</label>
-                    <input type="text" class="form-control" id="club_name" placeholder="Club Name" required>
+                    <input type="text" maxlength="100" class="form-control" id="club_name" placeholder="Club Name" required>
                 </div>
                 <div class="form-group">
                     <label for="club_description">Description</label>
-                    <input type="text" class="form-control" id="club_description" placeholder="Description" required>
+                    <input type="text" maxlength="255" class="form-control" id="club_description" placeholder="Description" required>
                 </div>
                 <div class="form-group">
                     <label for="exampleInputEmail1">
@@ -29,20 +29,19 @@
                 </div>
                 <div class="form-group">
                     <label for="location_city"> City </label>
-                    <input type="text" class="form-control" id="location_city" placeholder="City" required>
+                    <input type="text" maxlength="100" class="form-control" id="location_city" placeholder="City">
                 </div>
                 <div class="form-group">
                     <label for="location_state">State</label>
-                    <input type="text" class="form-control" id="location_state" placeholder="State" required>
+                    <input type="text" maxlength="100" class="form-control" id="location_state" placeholder="State">
                 </div>
                 <div class="form-group">
                     <label for="location_zip"> Zip Code </label>
-                    <input type="zip" maxlength="5" class="form-control" id="location_zip" placeholder="Zip Code"
-                        required>
+                    <input type="zip" maxlength="5" class="form-control" id="location_zip" placeholder="Zip Code">
                 </div>
                 <div class="form-group">
                     <label for="online_base_url"> Online Base URL </label>
-                    <input type="url" class="form-control" id="online_base_url" placeholder="Online Base URL">
+                    <input type="text" maxlength="255" class="form-control" id="online_base_url" placeholder="Online Base URL">
                 </div>
                 {{!-- <img src="/../assets/img/orbit.jpg" alt="orbit" width="300" height="300"> --}}
                 <div style="display: none" id="alert" class="alert alert-danger" role="alert">

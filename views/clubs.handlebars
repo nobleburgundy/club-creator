@@ -32,21 +32,23 @@
             </div>
         </div>
         {{/each}}
-        {{#if this.loggedIn}}
-        {{else}}
-        <h4><a href="/login">Login</a>, or <a href="/signup">sign up</a> to create, or join clubs.</h4>
-        {{/if}}
-        {{else}}
-        <div class="col-md-12">
-            <div class="w-100">
-                <h3>No clubs under that category currently exist, why dont you go make one?</h3>
-                {{#if this.loggedIn}}
-                <h4><a href="/createclub">Create a club here!</a></h4>
-                {{else}}
-                <h4><a href="/login">Login</a>, or <a href="/signup">sign up</a> to create clubs.</h4>
-                {{/if}}
-            </div>
-        </div>
-        {{/if}}
     </div>
+    {{#if this.loggedIn}}
+    {{else}}
+    <div class="row">
+        <h4><a href="/login">Login</a>, or <a href="/signup">sign up</a> to create, or join clubs.</h4>
+    </div>
+    {{/if}}
+    {{else}}
+    <div class="col-md-12">
+        <div class="w-100">
+            <h3>No clubs under that category currently exist, why dont you go make one?</h3>
+            {{#if this.loggedIn}}
+            <h4><a href="/createclub">Create a club here!</a></h4>
+            {{else}}
+            <h4><a href="/login">Login</a>, or <a href="/signup">sign up</a> to create clubs.</h4>
+            {{/if}}
+        </div>
+    </div>
+    {{/if}}
 </div>

@@ -70,7 +70,7 @@ module.exports = function (app) {
     // when navigating to 'yourclubs' render the 'clubs' page, but only with the User's joined clubs
     const query = { include: { model: db.User, as: "Users", where: { id: req.user.id } } };
     db.Club.findAll(query).then(function (data) {
-      res.render("clubs", { clubs: [...data], loggedIn: req.user });
+      res.render("clubs", { clubs: [...data], loggedIn: req.user, header: "Your Clubs:" });
     });
   });
 

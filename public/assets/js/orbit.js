@@ -4,6 +4,14 @@ $(document).ready(() => {
   const searchInput = $("input#stretch");
   const searchButton = $("button#search-button");
 
+  // load the previous search as a placeholder if exists
+  if (window.location.search) {
+    const query = window.location.search;
+    const searchTerm = query.substr(query.indexOf("=") + 1);
+    // decodeURI is used so %20 isnt displayed instead of spaces
+    searchInput.attr('placeholder', decodeURI(searchTerm));
+  }
+
   searchForm.on("submit", (event) => {
     event.preventDefault();
     const query = searchInput.val();

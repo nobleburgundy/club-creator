@@ -4,6 +4,10 @@
 }
 
 /* TAGS */
+a {
+  color: #484991;
+}
+
 html,
 body {
   height: 100%;
@@ -21,19 +25,11 @@ h3 {
 footer {
   background-color: #666666 !important;
   width: 100% !important;
-  position: relative; 
-  bottom: 0; 
-  left: 0; 
-  right: 0;
+  position: static;
+  bottom: 0;
 }
 
 /* CLASSES */
-.body {
-  /* background-color: red !important; */
-  width: 100% !important;
-  height: 100% !important;
-}
-
 .jumbotron {
   background-image: url("../../assets/img/space1.jpg") !important;
   z-index: 0;
@@ -63,7 +59,7 @@ footer {
   margin: 10px;
 }
 
-.team-card{
+.team-card {
   margin: 10px;
 }
 
@@ -88,7 +84,6 @@ footer {
   width: 80%;
 }
 
-
 .homepage-nav {
   box-shadow: 1px 1px 4px #666666;
   background-color: white !important;
@@ -96,6 +91,10 @@ footer {
 
 .su {
   box-shadow: 1px 1px 6px #000000;
+}
+
+.navbar-toggler {
+  color: white;
 }
 
 /* IDS */
@@ -130,14 +129,12 @@ footer {
   height: 200px;
   width: auto;
   z-index: 1;
-  transform: rotate(45deg); 
+  transform: rotate(45deg);
   position: relative;
   top: 0;
   left: -80px;
   bottom: 0;
   right: 0;
-  /* display: block; */
-  /* object-fit: fill; */
 }
 
 @media screen and (max-width: 1024px) {
@@ -169,7 +166,6 @@ footer {
     bottom: 0%;
     z-index: 1;
     transform: rotate(20deg);
-    /* overflow: hidden; */
   }
 }
 
@@ -189,14 +185,3 @@ footer {
 #main-nav {
   box-shadow: 1px 1px 6px #000000;
 }
-
-/* Add later */
-/* Play with show on jumbotron. text-shadow: 1px 1px 4px #000000; */
-
-/* Colors */
-/* #0f0f4b
-#484991
-#4f2f79
-#753e93
-#666666
-#FFFFFF */

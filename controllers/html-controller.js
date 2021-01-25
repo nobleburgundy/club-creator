@@ -66,6 +66,14 @@ module.exports = function (app) {
     });
   });
 
+  app.get("/yourclubs", (req, res) => {
+    // when navigating to 'yourclubs' render the 'clubs' page, but only with the User's joined clubs
+    const query = { include: { model: db.User, as: "Users", where: { id: req.user.id } } };
+    db.Club.findAll(query).then(function (data) {
+      res.render("clubs", { clubs: [...data], loggedIn: req.user });
+    });
+  });
+
   app.get("/search", (req, res) => {
     const query = req.query.q;
     console.log("q = " + req.query.q);
@@ -85,7 +93,6 @@ module.exports = function (app) {
         ],
       },
     }).then(function (data) {
-      console.log("TESTING");
       res.render("clubs", { clubs: [...data], loggedIn: req.user });
     });
   });

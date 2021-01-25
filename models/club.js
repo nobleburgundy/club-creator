@@ -16,23 +16,23 @@ module.exports = function (sequelize, DataTypes) {
     },
     location_city: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
-        len: [1],
+        len: [0, 100],
       },
     },
     location_state: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
-        len: [1],
+        len: [0, 100],
       },
     },
     location_zip: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
       validate: {
-        len: [5, 5],
+        len: [0, 5],
       },
     },
     online_base_url: {

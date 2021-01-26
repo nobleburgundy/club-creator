@@ -1,3 +1,5 @@
+![md](https://img.shields.io/badge/license-MIT&nbsp;License-success)
+
 # ORBIT # 
 > One small step for man, one giant leap for digital interaction.
 
@@ -37,3 +39,4 @@ To contribute, please reach out to a member of the development team.
 - Jordon Moses: [GitHub](https://github.com/UrkelX)
 
 ## License ##
+MIT

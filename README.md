@@ -1,4 +1,4 @@
-![md](https://img.shields.io/badge/license-MIT&nbsp;License-success)
+![md](https://img.shields.io/badge/license-MIT&nbsp;License-success) ![travis](https://travis-ci.com/nobleburgundy/orbit.svg?branch=main)
 
 # ORBIT # 
 > One small step for man, one giant leap for digital interaction.
@@ -26,6 +26,7 @@ A application where users can find, create, or navigate clubs/social groups or e
 - sequelize
 
 ## Usage ##
+Navigate [here](https://wereinorbit.herokuapp.com/), then sign up for an account to get started.
 
 
 ## Contributions ##
